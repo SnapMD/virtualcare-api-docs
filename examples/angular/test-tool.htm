@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="apiTestApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+    <style>
+    .push-it-down {
+        margin-top: 60px;
+    }
+	.alert {
+		overflow: scroll;
+	}
+	.someTopSpace {
+		margin-top: 10px;
+	}
+    </style>
+<body ng-controller="apiTestController">
+    <span us-spinner="{radius:30, width:8, length: 16}"></span>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">{{title}}</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>    
+
+    <div class="container push-it-down">
+
+		<div class="panel panel-default">          
+            <div class="panel-heading">
+                Test Configuration
+            </div>
+            <div class="panel-body">
+				<div>
+                    <label>Base URL:</label>
+					<input ng-model="baseUrl" ng-change="changedBaseUrl()" class="form-control input-sm" placeholder="https://sandbox.connectedcare.md/" type="text">
+                    <label>DeveloperId:</label>
+                    <input ng-model="developerId" class="form-control input-sm" type="text">
+                    <label>Api Key:</label>
+                    <input ng-model="apiKey" class="form-control input-sm" type="text">                    
+				</div>
+            </div>
+        </div>
+        <div class="panel panel-default">          
+            <div class="panel-heading">
+                POST /Account/Token
+                <a target="_blank" href="https://sandbox.connectedcare.md/api/Help/Api/POST-Account-Token"><span class="glyphicon glyphicon-question-sign"></span>Help</a>
+            </div>
+            <div class="panel-body">
+                <button type="button" class="btn btn-default btn-lg" ng-click="doGetToken();">
+                  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Get Token
+                </button>
+				<div>
+					<label>Email:</label>
+					<input ng-model="emailAddress" class="form-control input-sm" type="text">
+					<label>Password:</label>
+					<input ng-model="userPassword" class="form-control input-sm" type="password">
+					<label>HospitalId:</label>
+					<input ng-model="hospitalId" class="form-control input-sm" type="text">
+					<label>PatientId:</label>
+					<input ng-model="patientId" class="form-control input-sm" type="text">
+					<label>UserId:</label>
+					<input ng-model="userId" class="form-control input-sm" type="text">
+				</div>
+				<div class="alert {{tokenStatus}} someTopSpace prettyprint linenums" role="alert">{{accessToken}}</div>
+            </div>
+        </div>
+		
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                POST v2/patients/consultations
+				<a target="_blank" href="https://sandbox.connectedcare.md/api/Help/Api/POST-v2-patients-consultations"><span class="glyphicon glyphicon-question-sign"></span>Help</a>
+            </div>
+            <div class="panel-body" id="patientPaymentProfiles">
+                <button type="button" class="btn btn-default btn-lg" ng-click="doPostOnDemandConsultation();">
+                  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Post On-Demand Request
+                </button>
+				<div>
+					<label>Patient Id:</label>
+					<input ng-model="patientId" class="form-control input-sm" type="text">
+					<p class="someTopSpace">
+                        <pre class="prettyprint linenums">
+                            {{OnDemandConsultationSaveResult}}
+                        </pre>
+						
+					</p>
+				</div>
+            </div>
+        </div>
+        
+		<div class="panel panel-default">
+            <div class="panel-heading">
+                POST /v2/patients/consultations/{consultationId}/intake
+                <a target="_blank" href="https://sandbox.connectedcare.md/api/Help/Api/GET-healthplan-provider"><span class="glyphicon glyphicon-question-sign"></span>Help</a>
+            </div>
+            <div class="panel-body" id="ConsultationSave">
+                <button type="button" class="btn btn-default btn-lg" ng-click="doPutConsultationSave();">
+                  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Consultation Save
+                </button>
+				<div>
+					<label>Consultation ID:</label>
+					<input ng-model="consultationId" class="form-control input-sm" type="text">
+					<p class="someTopSpace">
+						<pre class="prettyprint linenums">
+                            {{ConsultationSave}}
+                        </pre>
+					</p>
+				</div>
+            </div>
+        </div>
+		
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                POST v2/consultations/events
+                <a target="_blank" href="https://sandbox.connectedcare.md/api/Help/Api/POST-v2-consultations-events"><span class="glyphicon glyphicon-question-sign"></span>Help</a>
+            </div>
+            <div class="panel-body" id="ConsultationSave">
+                <button type="button" class="btn btn-default btn-lg" ng-click="doPostConsultationsEvents();">
+                  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Update Consultation Status
+                </button>
+				<div>
+					<label>Consultation ID:</label>
+					<input ng-model="consultationId" class="form-control input-sm" type="text">
+                    <label>Event:</label>
+					<input ng-model="event" class="form-control input-sm" type="text">
+                    <label>Event Type:</label>
+					<input ng-model="eventType" class="form-control input-sm" type="text">
+                    <label>API Call Status Code: {{addEventServerStatus}}</label>
+					<pre class="prettyprint linenums">
+						{{addEventStatus}}
+					</pre>
+				</div>
+            </div>
+        </div>
+		<div class="panel panel-default">
+            <div class="panel-heading">
+                GET /v2/patients/consultations/{consultationId}/all
+                <a target="_blank" href="https://sandbox.connectedcare.md/api/Help/Api/GET-v2-patients-consultations-consultationId-all"><span class="glyphicon glyphicon-question-sign"></span>Help</a>
+            </div>
+            <div class="panel-body">
+                <button type="button" class="btn btn-default btn-lg" ng-click="doGetExistingConsultation();">
+                  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Get Existing Consultation
+                </button>
+				<div>
+					<label>Consultation ID:</label>
+					<input ng-model="consultationId" class="form-control input-sm" type="text">
+                    <pre class="prettyprint linenums">
+                        {{existingConsultation}}
+                    </pre>
+                    
+				</div>
+            </div>
+        </div>
+		
+		<div class="panel panel-default">
+            <div class="panel-heading">
+                GET v2/patients/scheduledconsultations?id={patientId}
+                <a target="_blank" href="https://sandbox.connectedcare.md/api/Help/Api/GET-v2-patients-scheduledconsultations_id"><span class="glyphicon glyphicon-question-sign"></span>Help</a>
+            </div>
+            <div class="panel-body">
+                <button type="button" class="btn btn-default btn-lg" ng-click="doGetScheduledConsultation();">
+                  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Get Patient Scheduled Consultation List 
+                </button>
+				<div>
+					<label>Patient ID:</label>					
+					<input ng-model="patientId" class="form-control input-sm" type="text">
+                    <pre class="prettyprint linenums">
+                        {{scheduledConsultationList}}
+                    </pre>
+                    
+				</div>
+            </div>
+        </div>
+		
+		<div class="panel panel-default">
+            <div class="panel-heading">
+                GET patients/patientId/payments
+                <a target="_blank" href="https://sandbox.connectedcare.md/api/Help/Api/GET-patients-id-payments"><span class="glyphicon glyphicon-question-sign"></span>Help</a>
+            </div>
+            <div class="panel-body">
+                <button type="button" class="btn btn-default btn-lg" ng-click="doGetPatientPaymentProfiles();">
+                  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Get Patient Payment Profiles
+                </button>
+				<div>
+					<label>Patient ID:</label>					
+					<input ng-model="patientId" class="form-control input-sm" type="text">
+                    <pre class="prettyprint linenums">
+                        {{patientPaymentProfiles}}
+                    </pre>
+                    
+				</div>
+            </div>
+        </div>
+		
+		 <div class="panel panel-default">
+            <div class="panel-heading">
+               POST v2/patients/copay
+                <a target="_blank" href="https://sandbox.connectedcare.md/api/Help/Api/POST-patients-copay"><span class="glyphicon glyphicon-question-sign"></span>Help</a>
+            </div>
+            <div class="panel-body" id="ConsultationSave">
+                <button type="button" class="btn btn-default btn-lg" ng-click="doPostCoPayDetails();">
+                  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> POST patients/copay
+                </button>
+				<div>
+					<label>ProfileId:</label>
+					<input ng-model="profileId" class="form-control input-sm" type="text">
+					<label>Email:</label>
+					<input ng-model="emailAddress" class="form-control input-sm" type="text">
+					<label>Amount:</label>
+					<input ng-model="Amount" class="form-control input-sm" type="text">
+					<label>ConsultationId:</label>
+					<input ng-model="consultationId" class="form-control input-sm" type="text">
+					<label>PaymentProfileId:</label>
+					<input ng-model="paymentProfileId" class="form-control input-sm" type="text">
+					
+					 <pre class="prettyprint linenums">
+						{{CreditCardDetails}}
+					</pre>
+				</div>
+            </div>
+        </div>
+		
+		<div class="panel panel-default">
+            <div class="panel-heading">
+                GET v2/codesets?hospitalId={hospitalId}&fields={fields}
+				<a target="_blank" href="https://sandbox.connectedcare.md/api/Help/Api/GET-v2-codesets_hospitalId_fields"><span class="glyphicon glyphicon-question-sign"></span>Help</a>
+            </div>
+            <div class="panel-body" id="patientPaymentProfiles">
+                <button type="button" class="btn btn-default btn-lg" ng-click="doGetCodesSet();">
+                  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Get Codesets
+                </button>
+				<div>
+					<label>Hospital Id:</label>
+					<input ng-model="hospitalId" class="form-control input-sm" type="text">
+					<label>Code Fields:</label>
+					<textarea json-text rows="5" cols="10" class="form-control input-sm" ng-model="codesFields"></textarea>
+					
+					<p class="someTopSpace">
+                        <pre class="prettyprint linenums">
+                            {{hospitalCodesList}}
+                        </pre>
+						
+					</p>
+				</div>
+            </div>
+        </div>
+		        
+    </div><!-- /.container -->
+	
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="scripts/ui-bootstrap-tpls-0.12.1.min.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/spin.min.js"></script>
+<script src="scripts/angular-spinner.min.js"></script>
+<script src="scripts/angular-loading-spinner.js"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=sunburst"></script>
+
+<style type="text/css">
+    pre.prettyprint{
+        max-height: 200px;
+    }
+</style>
+</html>
