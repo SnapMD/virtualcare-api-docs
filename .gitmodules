@@ -1,0 +1,3 @@
+[submodule "docs"]
+	path = docs
+	url = https://github.com/SnapMD/virtualcare-api-docs.wiki.git
