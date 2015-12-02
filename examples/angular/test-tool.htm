@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="scripts/json-formatter.min.css">
 </head>
     <style>
     .push-it-down {
@@ -49,9 +50,9 @@
                     <label>Base URL:</label>
 					<input ng-model="baseUrl" ng-change="changedBaseUrl()" class="form-control input-sm" placeholder="https://sandbox.connectedcare.md/" type="text">
                     <label>DeveloperId:</label>
-                    <input ng-model="developerId" class="form-control input-sm" type="text">
+                    <input ng-model="developerId" ng-change="changedDeveloperId()" class="form-control input-sm" type="text">
                     <label>Api Key:</label>
-                    <input ng-model="apiKey" class="form-control input-sm" type="text">                    
+                    <input ng-model="apiKey" ng-change="changedApiKey()" class="form-control input-sm" type="text">                    
 				</div>
             </div>
         </div>
@@ -71,6 +72,12 @@
 					<input ng-model="userPassword" class="form-control input-sm" type="password">
 					<label>HospitalId:</label>
 					<input ng-model="hospitalId" class="form-control input-sm" type="text">
+                    <label>User Type:</label>
+                    <select ng-model="userTypeId" class="form-control input-sm" type="text">
+                        <option value="1">Patient</option>
+                        <option value="2">Clinician</option>
+                        <option value="3">Admin</option>                        
+                    </select>
 					<label>PatientId:</label>
 					<input ng-model="patientId" class="form-control input-sm" type="text">
 					<label>UserId:</label>
@@ -258,7 +265,90 @@
 				</div>
             </div>
         </div>
-		        
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                GET /v2/filesharing/folder/{fileSharingType}?patientId={patientId}&amp;consultationId={consultationId}
+                <br>
+                fileSharingType = {"customer", "physician", "admin"}
+                <a target="_blank" href="https://sandbox.connectedcare.md/api/Help/Api/GET-healthplan-provider"><span class="glyphicon glyphicon-question-sign"></span>Help</a>
+            </div>
+            <div class="panel-body" id="GetBaseFolderStructure">
+                <button type="button" class="btn btn-default btn-lg" ng-click="doGetBaseFolderStructure();">
+                  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Get Base Folder
+                </button>
+				<div>
+                    <label>FileSharing Type:</label>
+					<input ng-model="fileSharingType" class="form-control input-sm" type="text">
+					<label>Patient ID:</label>
+					<input ng-model="patientId" class="form-control input-sm" type="text">
+                    <label>Consultation ID:</label>
+					<input ng-model="consultationId" class="form-control input-sm" type="text">
+					<label>API Call Status Code: {{getBaseFolderEventServerStatus}}</label>
+					<pre class="prettyprint linenums">
+                        <json-formatter open="1" json="getBaseFolderEventStatus" class=json-formatter-dark></json-formatter>
+					</pre>
+				</div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                GET /v2/filesharing/folder/{fileSharingType}/{folderId}?patientId={patientId}&amp;consultationId={consultationId}
+                <br>
+                fileSharingType = {"customer", "physician", "admin"}
+                <a target="_blank" href="https://sandbox.connectedcare.md/api/Help/Api/GET-healthplan-provider"><span class="glyphicon glyphicon-question-sign"></span>Help</a>
+            </div>
+            <div class="panel-body" id="GetFolderStructure">
+                <button type="button" class="btn btn-default btn-lg" ng-click="doGetFolderStructure();">
+                  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Get Folder
+                </button>
+				<div>
+                    <label>FileSharing Type:</label>
+					<input ng-model="fileSharingType" class="form-control input-sm" type="text">
+                    <label>Folder ID:</label>
+					<input ng-model="folderId" class="form-control input-sm" type="text">
+					<label>Patient ID:</label>
+					<input ng-model="patientId" class="form-control input-sm" type="text">
+                    <label>Consultation ID:</label>
+					<input ng-model="consultationId" class="form-control input-sm" type="text">
+					<label>API Call Status Code: {{getFolderEventServerStatus}}</label>
+					<pre class="prettyprint linenums">
+						<json-formatter open="1" json="getFolderEventStatus" class=json-formatter-dark></json-formatter>
+					</pre>
+				</div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                POST /v2/filesharing/folder/{fileSharingType}?patientId={patientId}&amp;consultationId={consultationId}
+                <br>
+                fileSharingType = {"customer", "physician", "admin"}
+                <a target="_blank" href="https://sandbox.connectedcare.md/api/Help/Api/GET-healthplan-provider"><span class="glyphicon glyphicon-question-sign"></span>Help</a>
+            </div>
+            <div class="panel-body" id="PostFolder">
+                <button type="button" class="btn btn-default btn-lg" ng-click="doPostFolder();">
+                  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Post Folder
+                </button>
+				<div>
+                    <label>FileSharing Type:</label>
+					<input ng-model="fileSharingType" class="form-control input-sm" type="text">
+                    <label>Parent Folder:</label>
+					<input ng-model="folderId" class="form-control input-sm" type="text">
+                    <label>Folder Name:</label>
+					<input ng-model="folderName" class="form-control input-sm" type="text">
+					<label>Patient ID:</label>
+					<input ng-model="patientId" class="form-control input-sm" type="text">
+                    <label>Consultation ID:</label>
+					<input ng-model="consultationId" class="form-control input-sm" type="text">
+					<label>API Call Status Code: {{postFolderEventServerStatus}}</label>
+					<pre class="prettyprint linenums">
+						<json-formatter open="1" json="postFolderEventStatus" class=json-formatter-dark></json-formatter>
+					</pre>
+				</div>
+            </div>
+        </div>
     </div><!-- /.container -->
 	
 </body>
@@ -270,10 +360,11 @@
 <script src="scripts/angular-spinner.min.js"></script>
 <script src="scripts/angular-loading-spinner.js"></script>
 <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=sunburst"></script>
+<script src="scripts/json-formatter.min.js"></script>
 
 <style type="text/css">
     pre.prettyprint{
-        max-height: 200px;
+        max-height: 400px;
     }
 </style>
 </html>
