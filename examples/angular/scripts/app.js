@@ -9,10 +9,10 @@ var util = {
         request.defaults.headers.post['X-Api-Key'] = '1de605089c18aa8318c9f18177facd7d93ceafa5';
         return request;
     },
-    getHeaders: function (accessToken) {
+    getHeaders: function (accessToken, apiKey, developerId) {
         var headers = {
-                'X-Developer-Id': '4ce98e9fda3f405eba526d0291a852f0',
-                'X-Api-Key': '1de605089c18aa8318c9f18177facd7d93ceafa5',
+                'X-Developer-Id': developerId, //'4ce98e9fda3f405eba526d0291a852f0',
+                'X-Api-Key': apiKey, //'1de605089c18aa8318c9f18177facd7d93ceafa5',
                 'Content-Type': 'application/json; charset=utf-8'
             };
         if (typeof accessToken != 'undefined') {
@@ -23,7 +23,7 @@ var util = {
     }
 }
 // Declare app level module which depends on views, and components
-var app = angular.module('apiTestApp', ['ui.bootstrap', 'ngLoadingSpinner']);
+var app = angular.module('apiTestApp', ['ui.bootstrap', 'ngLoadingSpinner', 'jsonFormatter']);
 
 app.controller('apiTestController', ['$scope', 'apiComService', function ($scope, apiComService) {
 		
@@ -31,11 +31,15 @@ app.controller('apiTestController', ['$scope', 'apiComService', function ($scope
         $scope.title = 'SnapMD API Test';
         $scope.accessToken = 'No Token';
         $scope.tokenStatus = 'alert-warning';
+        
+        $scope.developerId = apiComService.developerId;
+        $scope.apiKey = apiComService.apiKey;
+    
        // $scope.existingConsultation = '{ "message": "NO EXISITING CONSULTATION JSON" }';
         $scope.consultationId = 2440;//2440
         $scope.patientId = 452;
 		$scope.otherPatientId = 505;
-        $scope.hospitalId = 126;
+        $scope.hospitalId = 1; //126;
         $scope.userTypeId = 1;
         $scope.profileId = '';
 		$scope.emailAddress = 'user@domain.tld';//'austin@rinsoft.com';
@@ -91,6 +95,8 @@ app.controller('apiTestController', ['$scope', 'apiComService', function ($scope
 		$scope.addEventStatus = "";
         $scope.event = 120;
         $scope.eventType = 23;
+    
+        $scope.fileSharingType = "customer";
 		
         $scope.codesFields = "medicalconditions,medications,medicationallergies,consultprimaryconcerns,consultsecondaryconcerns";
 
@@ -188,6 +194,16 @@ app.controller('apiTestController', ['$scope', 'apiComService', function ($scope
 		$scope.changedBaseUrl = function(){
 			apiComService.setBaseUrl($scope.baseUrl);
 		};
+    
+        $scope.changedDeveloperId = function(){
+			apiComService.setDeveloperId($scope.developerId);
+		};
+
+    
+        $scope.changedApiKey = function(){
+			apiComService.setApiKey($scope.apiKey);
+		};
+
 
         $scope.doGetToken = function () {
 			$scope.accessToken = 'processing ...';
@@ -757,11 +773,112 @@ app.controller('apiTestController', ['$scope', 'apiComService', function ($scope
             };
 
             apiComService.postConsultationsEvents(params);
-        }
+        };
+    
+        $scope.doGetBaseFolderStructure = function(){
+            if ($scope.accessToken == 'No Token') {
+                alert('No token.  Get token first then attempt operation.');
+                return;
+            }
+            
+            $scope.getBaseFolderEventStatus = 'processing ...';
+            var params = {
+                consultationId: $scope.consultationId,
+                patientId: $scope.patientId,
+                accessToken: $scope.accessToken,
+                success: function (data, status) {
+                    $scope.getBaseFolderEventServerStatus = 'success';
+                    $scope.getBaseFolderEventStatus = data;
+                },
+                error: function (data, status) {
+                    $scope.getBaseFolderEventStatus = 'Error getting the folder';
+                    $scope.getBaseFolderEventServerStatus = status;
+                    console.log(data);
+                }
+            };
+
+            apiComService.getBaseFolderStructure($scope.fileSharingType, params);
+        };
+		
+        $scope.doGetFolderStructure = function(){
+            if ($scope.accessToken == 'No Token') {
+                alert('No token.  Get token first then attempt operation.');
+                return;
+            }
+            
+            $scope.getFolderEventStatus = 'processing ...';
+            var params = {
+                consultationId: $scope.consultationId,
+                patientId: $scope.patientId,
+                accessToken: $scope.accessToken,
+                folderId: $scope.folderId,
+                success: function (data, status) {
+                    $scope.getFolderEventServerStatus = 'success';
+                    $scope.getFolderEventStatus = data;
+                },
+                error: function (data, status) {
+                    $scope.getFolderEventStatus = 'Error getting the folder';
+                    $scope.getFolderEventServerStatus = status;
+                    console.log(data);
+                }
+            };
+
+            apiComService.getFolderStructure($scope.fileSharingType, params);
+        };    
 		
 		
-		
-		
+        $scope.doPostFolder = function(){
+            if ($scope.accessToken == 'No Token') {
+                alert('No token.  Get token first then attempt operation.');
+                return;
+            }
+            
+            $scope.postFolderEventStatus = 'processing ...';
+            var params = {
+                consultationId: $scope.consultationId,
+                patientId: $scope.patientId,
+                accessToken: $scope.accessToken,
+                folderId: $scope.folderId,
+                name: $scope.folderName,
+                success: function (data, status) {
+                    $scope.postFolderEventServerStatus = 'success';
+                    $scope.postFolderEventStatus = data;
+                },
+                error: function (data, status) {
+                    $scope.postFolderEventStatus = 'Error creating the folder';
+                    $scope.postFolderEventServerStatus = status;
+                    console.log(data);
+                }
+            };
+
+            apiComService.postFolder($scope.fileSharingType, params);
+        };
+    
+        $scope.doPostFolder = function(){
+            if ($scope.accessToken == 'No Token') {
+                alert('No token.  Get token first then attempt operation.');
+                return;
+            }
+            
+            $scope.postFileEventStatus = 'processing ...';
+            var params = {
+                consultationId: $scope.consultationId,
+                patientId: $scope.patientId,
+                accessToken: $scope.accessToken,
+                folderId: $scope.folderId,
+                success: function (data, status) {
+                    $scope.postFileEventServerStatus = 'success';
+                    $scope.postFileEventStatus = data;
+                },
+                error: function (data, status) {
+                    $scope.postFileEventStatus = 'Error creating the folder';
+                    $scope.postFileEventServerStatus = status;
+                    console.log(data);
+                }
+            };
+
+            apiComService.postFile($scope.fileSharingType, params);
+        };
     }]);
 
 app.service('apiComService', function ($http) {
@@ -771,8 +888,8 @@ app.service('apiComService', function ($http) {
 	*/
 	var self = this;
 	self.baseUrl = 'https://sandbox.connectedcare.md/';
-    self.apiKey = '';
-    self.developerId = '';
+    self.apiKey = '1de605089c18aa8318c9f18177facd7d93ceafa5';
+    self.developerId = '4ce98e9fda3f405eba526d0291a852f0';
 	self.setBaseUrl = function(urlString){
 		self.baseUrl = urlString;
 	};
@@ -791,7 +908,7 @@ app.service('apiComService', function ($http) {
      */
     this.getToken = function (params) {
         var requestInfo = {
-            headers: util.getHeaders(),
+            headers: util.getHeaders(params.accessToken, self.apiKey, self.developerId),
             url: self.baseUrl + 'api/Account/Token',
             method: 'POST',
             data: {
@@ -1352,6 +1469,80 @@ app.service('apiComService', function ($http) {
             }  
         };
 
+        $http(requestInfo).
+                success(function (data, status, headers, config) {
+                    if (typeof params.success != 'undefined') {
+                        params.success(data, status);
+                    }
+                }).
+                error(function (data, status, headers, config) {
+                    if (typeof params.error != 'undefined') {
+                        params.error(data, status);
+                    }
+                });
+    },
+    
+    this.getBaseFolderStructure = function (fileSharingType, params){
+        var requestInfo = {
+            headers: util.getHeaders(params.accessToken, self.apiKey, self.developerId),
+            url: self.baseUrl + 'api/v2/filesharing/folder/' + fileSharingType,
+            method: 'GET',
+            data: {
+                consultationId: params.consultationId,
+                patientId: params.patientId
+            }  
+        };
+        
+        $http(requestInfo).
+                success(function (data, status, headers, config) {
+                    if (typeof params.success != 'undefined') {
+                        params.success(data, status);
+                    }
+                }).
+                error(function (data, status, headers, config) {
+                    if (typeof params.error != 'undefined') {
+                        params.error(data, status);
+                    }
+                });
+    },
+    
+    this.getFolderStructure = function (fileSharingType, params){
+        var requestInfo = {
+            headers: util.getHeaders(params.accessToken, self.apiKey, self.developerId),
+            url: self.baseUrl + 'api/v2/filesharing/folder/' + fileSharingType + '/' + params.folderId,
+            method: 'GET',
+            data: {
+                consultationId: params.consultationId,
+                patientId: params.patientId
+            }  
+        };
+        
+        $http(requestInfo).
+                success(function (data, status, headers, config) {
+                    if (typeof params.success != 'undefined') {
+                        params.success(data, status);
+                    }
+                }).
+                error(function (data, status, headers, config) {
+                    if (typeof params.error != 'undefined') {
+                        params.error(data, status);
+                    }
+                });
+    },
+    
+    this.postFolder = function(fileSharingType, params){
+        var requestInfo = {
+            headers: util.getHeaders(params.accessToken, self.apiKey, self.developerId),
+            url: self.baseUrl + 'api/v2/filesharing/folder/' + fileSharingType,
+            method: 'POST',
+            data: {
+                consultationId: params.consultationId,
+                patientId: params.patientId,
+                parent: params.folderId,
+                name: params.name
+            }  
+        };
+        
         $http(requestInfo).
                 success(function (data, status, headers, config) {
                     if (typeof params.success != 'undefined') {
