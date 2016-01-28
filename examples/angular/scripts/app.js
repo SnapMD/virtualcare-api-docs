@@ -1,18 +1,18 @@
 //https://sandbox.connectedcare.md/api/Help
 var util = {
-    setHeaders: function (request, credentials) {
+    setHeaders: function (request, credentials, apiKey, developerId) {
         if (typeof credentials != 'undefined') {
             request.defaults.headers.common['Authorization'] = "Bearer " + credentials.accessToken;
         }
         request.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
-        request.defaults.headers.post['X-Developer-Id'] = '4ce98e9fda3f405eba526d0291a852f0';
-        request.defaults.headers.post['X-Api-Key'] = '1de605089c18aa8318c9f18177facd7d93ceafa5';
+        request.defaults.headers.post['X-Developer-Id'] = developerId;
+        request.defaults.headers.post['X-Api-Key'] = apiKey;
         return request;
     },
     getHeaders: function (accessToken, apiKey, developerId) {
         var headers = {
-                'X-Developer-Id': developerId, //'4ce98e9fda3f405eba526d0291a852f0',
-                'X-Api-Key': apiKey, //'1de605089c18aa8318c9f18177facd7d93ceafa5',
+                'X-Developer-Id': developerId,
+                'X-Api-Key': apiKey,
                 'Content-Type': 'application/json; charset=utf-8'
             };
         if (typeof accessToken != 'undefined') {
@@ -888,8 +888,8 @@ app.service('apiComService', function ($http) {
 	*/
 	var self = this;
 	self.baseUrl = 'https://sandbox.connectedcare.md/';
-    self.apiKey = '1de605089c18aa8318c9f18177facd7d93ceafa5';
-    self.developerId = '4ce98e9fda3f405eba526d0291a852f0';
+    self.apiKey = '1234567890abcdef1234567890abcdef12345678';
+    self.developerId = '1234567890abcdef1234567890abcdef';
 	self.setBaseUrl = function(urlString){
 		self.baseUrl = urlString;
 	};
