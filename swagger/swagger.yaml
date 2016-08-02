@@ -1,0 +1,5478 @@
+# The SnapMD API YAML
+swagger: '2.0'
+info:
+  title: SnapMD API
+  description: VirtualCare API
+  version: "2.1.0"
+# the domain of the service
+host: sandbox.connectedcare.md
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /api
+produces:
+  - application/json
+  - application/xml
+paths:
+  /v2/patients/copay/{consultationId}/paymentstatus:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: consultationId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Copay
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfBoolean
+          schema:
+            type: object
+            description: ApiResponseV2OfBoolean
+  /v2/patients/copay:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: CopayRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: CopayRequest
+      tags:
+        - Copay
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfCopayPaymentResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfCopayPaymentResponse
+  /v2/departments/hospital/{hospitalId}?searchText={searchText}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: searchText 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Departments
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfDepartment
+          schema:
+            type: object
+            description: ApiResponseV2OfDepartment
+  /v2/physicians/appointments/{id}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Clinician Consultations
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfClinicianConsultationDetail
+          schema:
+            type: object
+            description: ApiResponseV2OfClinicianConsultationDetail
+  /v2.1/clinicians/consultations/{id}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Clinician Consultations
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfClinicianConsultationDetail
+          schema:
+            type: object
+            description: ApiResponseV2OfClinicianConsultationDetail
+  /v2/physicians/appointments/{id}/all:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Clinician Consultations
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfClinicianConsultationResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfClinicianConsultationResponse
+  /v2.1/clinicians/consultations/{id}/verbose:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Clinician Consultations
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfClinicianConsultationResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfClinicianConsultationResponse
+  /v2/participants/appointments:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Clinician Consultations
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfClinicianConsultationResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfClinicianConsultationResponse
+  /v2.1/participants/consultations:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Clinician Consultations
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfClinicianConsultationResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfClinicianConsultationResponse
+  /v2/physicians/appointments/{id}/videokey:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Clinician Consultations
+        - Version 2
+      responses:
+        200:
+          description: VideoKey
+          schema:
+            type: object
+            description: VideoKey
+  /v2.1/clinicians/consultations/{id}/participant-video-key:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Clinician Consultations
+        - Version 2.1
+      responses:
+        200:
+          description: VideoKey
+          schema:
+            type: object
+            description: VideoKey
+  /v2/helpcenter/customer/url:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Help Center
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfString
+          schema:
+            type: object
+            description: ApiResponseV2OfString
+  /v2/helpcenter/physician/url:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Help Center
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfString
+          schema:
+            type: object
+            description: ApiResponseV2OfString
+  /v2/helpcenter/admin/url:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Help Center
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfString
+          schema:
+            type: object
+            description: ApiResponseV2OfString
+  /v2.1/clinicians/availability-blocks:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Availability Blocks
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfAvailabilityBlockResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfAvailabilityBlockResponse
+    post:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Availability Blocks
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfAvailabilityBlockResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfAvailabilityBlockResponse
+  /v2.1/clinicians/availability-blocks/{availabilityBlockId}:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: availabilityBlockId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Availability Blocks
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfAvailabilityBlockResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfAvailabilityBlockResponse
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: availabilityBlockId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Availability Blocks
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfAvailabilityBlockResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfAvailabilityBlockResponse
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: availabilityBlockId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Availability Blocks
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfAvailabilityBlockResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfAvailabilityBlockResponse
+  /v2.1/clinicians/availability-blocks/{availabilityBlockId}/rule/{availabilityBlockRuleId}:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: availabilityBlockId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: availabilityBlockRuleId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Availability Blocks
+        - Version 2.1
+      responses:
+        200:
+          description: HttpResponseMessage
+          schema:
+            type: object
+            description: HttpResponseMessage
+  /v2.1/clinicians/availability-block-rules/{ruleId}/availability-blocks?from={from}&to={to}&onlyWithAppointments={onlyWithAppointments}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: ruleId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: from 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: to 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: onlyWithAppointments 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Availability Blocks
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfAvailabilityBlockResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfAvailabilityBlockResponse
+  /v2.1/clinicians/availability-blocks/coverage?from={from}&to={to}&type={type}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: from 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: to 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: type 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Availability Blocks
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfCoverageTimeFrame
+          schema:
+            type: object
+            description: ApiResponseV2OfCoverageTimeFrame
+  /v2/snapmd/hospital/diagnosticcodingsystem/{hospitalId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Medical Coding System
+        - Version 2
+      responses:
+        200:
+          description: None
+          schema:
+            type: object
+            description: None
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Medical Coding System
+        - Version 2
+      responses:
+        200:
+          description: None
+          schema:
+            type: object
+            description: None
+  /v2/physicians/medicalcodingsconfiguration/{consultationId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: consultationId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Medical Coding System
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseOfHospitalMedicalCodingsConfiguration
+          schema:
+            type: object
+            description: ApiResponseOfHospitalMedicalCodingsConfiguration
+  /v2/physicians/medicalcodes?medicalSystem={medicalSystem}&descriptionFilter={descriptionFilter}&take={take}&skip={skip}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: medicalSystem 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: descriptionFilter 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: take 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: skip 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Medical Coding System
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfMedicalCodeDTO
+          schema:
+            type: object
+            description: ApiResponseV2OfMedicalCodeDTO
+  /v2/physicians/consultation/medicalcodes:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: ConsultationMedicalCodesRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: ConsultationMedicalCodesRequest
+      tags:
+        - Medical Coding System
+        - Version 2
+      responses:
+        200:
+          description: None
+          schema:
+            type: object
+            description: None
+  /v2/patients/medicalprofile/{patientId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: PatientMedicalHistoryProfile
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: PatientMedicalHistoryProfile
+      tags:
+        - Patient Medical Profile
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfIPatientMedicalHistoryProfile
+          schema:
+            type: object
+            description: ApiResponseV2OfIPatientMedicalHistoryProfile
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: PatientMedicalHistoryProfile
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: PatientMedicalHistoryProfile
+      tags:
+        - Patient Medical Profile
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfIPatientMedicalHistoryProfile
+          schema:
+            type: object
+            description: ApiResponseV2OfIPatientMedicalHistoryProfile
+  /v2/patients/medicalprofile:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: PatientMedicalHistoryProfile
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: PatientMedicalHistoryProfile
+      tags:
+        - Patient Medical Profile
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfIPatientMedicalHistoryProfile
+          schema:
+            type: object
+            description: ApiResponseV2OfIPatientMedicalHistoryProfile
+  /v2.1/people?email={email}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: email 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - People
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfPersonRecord
+          schema:
+            type: object
+            description: ApiResponseV2OfPersonRecord
+  /v2/people:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: PersonRecord
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: PersonRecord
+      tags:
+        - People
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPersonRecord
+          schema:
+            type: object
+            description: ApiResponseV2OfPersonRecord
+  /v2/people/{personId}/telecoms:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: personId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Telecom
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: Telecom
+      tags:
+        - Telecom
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfTelecom
+          schema:
+            type: object
+            description: ApiResponseV2OfTelecom
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: personId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Telecom
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: Telecom
+      tags:
+        - Telecom
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfTelecom
+          schema:
+            type: object
+            description: ApiResponseV2OfTelecom
+  /v2/people/{personId}/telecoms/{telecomId}:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: personId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: telecomId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Telecom
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/admin/patients?email={email}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: email 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patient Administration
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseOfPatientOnBoardShortDetail
+          schema:
+            type: object
+            description: ApiResponseOfPatientOnBoardShortDetail
+  /v2/admin/patients/onboardEmailSetting:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Patient Administration
+        - Version 2
+      responses:
+        200:
+          description: None
+          schema:
+            type: object
+            description: None
+  /v2/admin/patients/send-onboarding-email?email={email}:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: email 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patient Administration
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/admin/patients:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: PatientOnBoardShortDetail
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: PatientOnBoardShortDetail
+      tags:
+        - Patient Administration
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfAddPatientAdminResponseShort
+          schema:
+            type: object
+            description: ApiResponseV2OfAddPatientAdminResponseShort
+  /v2/admin/patient/{patientId}/dependent:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: AddPatientProfileRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: AddPatientProfileRequest
+      tags:
+        - Patient Administration
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPatientProfileResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientProfileResponse
+  /v2/admin/patient/{patientId}/dependent/{dependentId}/relationship:
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: dependentId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: DependentRelationship
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: DependentRelationship
+      tags:
+        - Patient Administration
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfBoolean
+          schema:
+            type: object
+            description: ApiResponseV2OfBoolean
+  /v2.1/providers/{hospitalId}/patients?search={search}&take={take}&skip={skip}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: search 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: take 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: skip 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patient Administration
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfPatientPersonResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientPersonResponse
+  /v2.1/providers/{hospitalId}/patients/{patientId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patient Administration
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfPatientPersonResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientPersonResponse
+  /v2.1/images/{id}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Images
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfProfileImageResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfProfileImageResponse
+  /v2.1/filesharing/files/download/{filePublicLinkId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: filePublicLinkId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - File Download
+        - Version 2.1
+      responses:
+        200:
+          description: HttpResponseMessage
+          schema:
+            type: object
+            description: HttpResponseMessage
+  /v2.1/patients/appointments/{appointmentId}:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: appointmentId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patient Appointments
+        - Version 2.1
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: appointmentId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patient Appointments
+        - Version 2.1
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: appointmentId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patient Appointments
+        - Version 2.1
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2.1/patients/appointments:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Patient Appointments
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfAppointmentResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfAppointmentResponse
+  /v2.1/patients/scheduled-appointments:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Patient Appointments
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfAppointmentResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfAppointmentResponse
+  /v2.1/patients/filtered-appointments:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Patient Appointments
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfAppointmentResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfAppointmentResponse
+  /v2.1/patients/ondemand/availability?ProviderId={ProviderId}&StartTime={StartTime}&EndTime={EndTime}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: ProviderId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: StartTime 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: EndTime 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patient Appointments
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfOnDemandAvailabilityResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfOnDemandAvailabilityResponse
+  /v2/patients/availableconsultations:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Available Consultations
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPatientAvailableConsultation
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientAvailableConsultation
+  /v2/patients/{patientId}/consultations?status={status}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: status 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Available Consultations
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPatientConsultationInfo
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientConsultationInfo
+  /v2/clinicians/tags:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Tags
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+    post:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Tags
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/clinicians/{userId}/tags:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: userId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Tags
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfUserTags
+          schema:
+            type: object
+            description: ApiResponseV2OfUserTags
+  /v2/clinicians/hospitals/{hospitalId}/tags?searchText={searchText}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: searchText 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Tags
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfTag
+          schema:
+            type: object
+            description: ApiResponseV2OfTag
+  /v2/clinicians/tags/{id}:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Tags
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/clinicians/tags/{id}/staff:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: StaffAccount
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: StaffAccount
+      tags:
+        - Tags
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: StaffAccount
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: StaffAccount
+      tags:
+        - Tags
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2.1/patients/profile-images?patientId={patientId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patient Profile Images
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfImageUploadResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfImageUploadResponse
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patient Profile Images
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfImageUploadResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfImageUploadResponse
+  /v2/physicians/soapnotes:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: SoapNoteDetails
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: SoapNoteDetails
+      tags:
+        - Physician Soap Notes
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfSoapNotesResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfSoapNotesResponse
+  /v2.1/patients/appointments/self-scheduling/clinicians?Name={Name}&Date={Date}&AvailableOnly={AvailableOnly}&OnlyMyProviders={OnlyMyProviders}&Gender={Gender}&PracticingSinceStart={PracticingSinceStart}&PracticingSinceEnd={PracticingSinceEnd}&Skip={Skip}&Take={Take}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: Name 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Date 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: AvailableOnly 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: OnlyMyProviders 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Gender 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: PracticingSinceStart 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: PracticingSinceEnd 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Skip 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Take 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patient Self Scheduling
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfSelfSchedulingClinicianSearchResult
+          schema:
+            type: object
+            description: ApiResponseV2OfSelfSchedulingClinicianSearchResult
+  /v2.1/patients/appointments/self-scheduling/clinicians/{userId}?date={date}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: userId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: date 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patient Self Scheduling
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfSelfSchedulingClinician
+          schema:
+            type: object
+            description: ApiResponseV2OfSelfSchedulingClinician
+  /v2/integrations/externalappointments/{hospitalId}?DateStart={DateStart}&DateEnd={DateEnd}&FailedOnly={FailedOnly}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: DateStart 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: DateEnd 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: FailedOnly 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - External Appointments
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfExternalAppointmentDTO
+          schema:
+            type: object
+            description: ApiResponseV2OfExternalAppointmentDTO
+  /v2/clinicians/staffaccounts?take={take}&skip={skip}&tagId={tagId}&roleId={roleId}&staffNameFilter={staffNameFilter}&includePendingDoctors={includePendingDoctors}&includeDoctorsWithoutAppointmentPermission={includeDoctorsWithoutAppointmentPermission}&isNameFilterRequired={isNameFilterRequired}&groupIds={groupIds}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: take 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: skip 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: tagId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: roleId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: staffNameFilter 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: includePendingDoctors 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: includeDoctorsWithoutAppointmentPermission 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: isNameFilterRequired 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: groupIds 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Staff Accounts
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfStaffAccountInfo
+          schema:
+            type: object
+            description: ApiResponseV2OfStaffAccountInfo
+  /v2/admin/userstaffprofile:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Staff Accounts
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfUserStaffProfileResult
+          schema:
+            type: object
+            description: ApiResponseV2OfUserStaffProfileResult
+  /v2.1/clinicians/profile:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Staff Accounts
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfUserStaffProfileResult
+          schema:
+            type: object
+            description: ApiResponseV2OfUserStaffProfileResult
+  /v2/clinicians/staffaccounts:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: StaffAccountsRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: StaffAccountsRequest
+      tags:
+        - Staff Accounts
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2.1/clinicians/profile-images?clinicianUserId={clinicianUserId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: clinicianUserId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Clinician Profile Images
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfImageUploadResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfImageUploadResponse
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: clinicianUserId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Clinician Profile Images
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfImageUploadResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfImageUploadResponse
+  /v2/patients/accountsettings:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: AccountSettingsWithTimezone
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: AccountSettingsWithTimezone
+      tags:
+        - Account Settings
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfAccountSettingsChangeStatus
+          schema:
+            type: object
+            description: ApiResponseV2OfAccountSettingsChangeStatus
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: AccountSettingsWithTimezone
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: AccountSettingsWithTimezone
+      tags:
+        - Account Settings
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfAccountSettingsChangeStatus
+          schema:
+            type: object
+            description: ApiResponseV2OfAccountSettingsChangeStatus
+  /v2/integrations/partnersettings/{partnerId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: partnerId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: PartnerSettingField
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: PartnerSettingField
+      tags:
+        - Partner Settings
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPartnerSettingField
+          schema:
+            type: object
+            description: ApiResponseV2OfPartnerSettingField
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: partnerId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: PartnerSettingField
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: PartnerSettingField
+      tags:
+        - Partner Settings
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPartnerSettingField
+          schema:
+            type: object
+            description: ApiResponseV2OfPartnerSettingField
+  /v2/locations/{id}:
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Location
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: Location
+      tags:
+        - Locations
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfLocation
+          schema:
+            type: object
+            description: ApiResponseV2OfLocation
+  /v2/locations:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: Location
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: Location
+      tags:
+        - Locations
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfLocation
+          schema:
+            type: object
+            description: ApiResponseV2OfLocation
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: Location
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: Location
+      tags:
+        - Locations
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfLocation
+          schema:
+            type: object
+            description: ApiResponseV2OfLocation
+  /v2/publicdocuments?documentType={documentType}&hospitalId={hospitalId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: documentType 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Public Documents
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfDocumentsResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfDocumentsResponse
+  /v2/physicians:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Physicians
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfListOfPhysicianResult
+          schema:
+            type: object
+            description: ApiResponseV2OfListOfPhysicianResult
+  /v2/physicians/{id}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Physicians
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPhysicianResult
+          schema:
+            type: object
+            description: ApiResponseV2OfPhysicianResult
+  /v2/healthplans?patientId={patientId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Health Plan
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfHealthPlanListViewModel
+          schema:
+            type: object
+            description: ApiResponseV2OfHealthPlanListViewModel
+  /v2/organizations:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: Organization
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: Organization
+      tags:
+        - Organizations
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfOrganization
+          schema:
+            type: object
+            description: ApiResponseV2OfOrganization
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: Organization
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: Organization
+      tags:
+        - Organizations
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfOrganization
+          schema:
+            type: object
+            description: ApiResponseV2OfOrganization
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: Organization
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: Organization
+      tags:
+        - Organizations
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfOrganization
+          schema:
+            type: object
+            description: ApiResponseV2OfOrganization
+  /v2/patients/medicalhistory/{patientId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patient Medical History
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfIMedicalHistory
+          schema:
+            type: object
+            description: ApiResponseV2OfIMedicalHistory
+  /v2/timezones:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Time Zone
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfTimeZoneModel
+          schema:
+            type: object
+            description: ApiResponseV2OfTimeZoneModel
+  /v2/patients/profile?include={include}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: include 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patients
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPatientDetails
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientDetails
+  /v2.1/patients/details?include={include}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: include 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patients
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfPatientDetails
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientDetails
+  /v2/patients/profiles/{patientId}:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patients
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patients
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/patients/userprofile:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Patients
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfUserProfilesResult
+          schema:
+            type: object
+            description: ApiResponseV2OfUserProfilesResult
+  /v2/patients/profile/{patientId}?include={include}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: include 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patients
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPatientDetails
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientDetails
+  /v2.1/patients/{patientId}/details?include={include}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: include 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patients
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfPatientDetails
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientDetails
+  /v2/patients:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: NewPatientRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: NewPatientRequest
+      tags:
+        - Patients
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfNewPatientResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfNewPatientResponse
+  /v2/patients/updateuserprofile:
+    put:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Patients
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPatientProfile
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientProfile
+  /v2/patients/single-trip-registration:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: NewPatientRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: NewPatientRequest
+      tags:
+        - Patients
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfNewPatientResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfNewPatientResponse
+  /v2/patients/single-trip-registration/resend-onboarding-email:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: EmailUserRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: EmailUserRequest
+      tags:
+        - Patients
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfString
+          schema:
+            type: object
+            description: ApiResponseV2OfString
+  /v2/patients/couser-tokens/{token}/email:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: token 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patients
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/patients/couser-tokens/{token}/patient-profile:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: token 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patients
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/patients/account-activation:
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: PatientAccountActivateRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: PatientAccountActivateRequest
+      tags:
+        - Patients
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/patients/cousers:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: NewCoUserRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: NewCoUserRequest
+      tags:
+        - Patients
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2.1/patients/cousers/{patientId}:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patients
+        - Version 2.1
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2.1/patients/authorized-patients:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Patients
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfPatientPersonResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientPersonResponse
+  /v2/clinicians/tagfiles/{id}/staff:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: StaffAccount
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: StaffAccount
+      tags:
+        - Tag File
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: StaffAccount
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: StaffAccount
+      tags:
+        - Tag File
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/clinicians/patients?take={take}&skip={skip}&searchType={searchType}&nameFilter={nameFilter}&includeInactivePatients={includeInactivePatients}&includeNotAuthorized={includeNotAuthorized}&startDate={startDate}&endDate={endDate}&isNameFilterRequired={isNameFilterRequired}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: take 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: skip 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: searchType 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: nameFilter 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: includeInactivePatients 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: includeNotAuthorized 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: startDate 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: endDate 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: isNameFilterRequired 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patients Accounts
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPatientAccountInfo
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientAccountInfo
+  /v2/clinicians/patients:
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: PatientsAccountsRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: PatientsAccountsRequest
+      tags:
+        - Patients Accounts
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/admin/patients/{id}:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patients Accounts
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/hospital/{hospitalId}/operatinghours:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: OperatingHourDTO
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: OperatingHourDTO
+      tags:
+        - Operating Hours
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: OperatingHourDTO
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: OperatingHourDTO
+      tags:
+        - Operating Hours
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: OperatingHourDTO
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: OperatingHourDTO
+      tags:
+        - Operating Hours
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/hospital/operatinghours/{id}:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Operating Hours
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/account/user:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Account
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfSerializableUser
+          schema:
+            type: object
+            description: ApiResponseV2OfSerializableUser
+  /v2/account/token?jwt={jwt}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: jwt 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Account
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfSerializableToken
+          schema:
+            type: object
+            description: ApiResponseV2OfSerializableToken
+  /v2/account/token?ssoToken={ssoToken}&agentId={agentId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: ssoToken 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: agentId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Account
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfSsoSerializableToken
+          schema:
+            type: object
+            description: ApiResponseV2OfSsoSerializableToken
+  /v2/account/token:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: LoginRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: LoginRequest
+      tags:
+        - Account
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfSerializableToken
+          schema:
+            type: object
+            description: ApiResponseV2OfSerializableToken
+  /v2/account/password?old={old}&new={new}:
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: old 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: new 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Account
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/patient/onboard/isValidToken?token={token}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: token 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Account
+        - Version 2
+      responses:
+        200:
+          description: None
+          schema:
+            type: object
+            description: None
+  /v2/account/password?token={token}&password={password}:
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: token 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: password 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Account
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/patient/onboard/createPassword?token={token}&password={password}:
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: token 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: password 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Account
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/account/user/tokens/{token}/{codesetId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: token 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: codesetId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Account
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/account/couser/tokens/{token}/{codesetId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: token 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: codesetId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Account
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2.1/users/current-time?datetime={datetime}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: datetime 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Account
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfString
+          schema:
+            type: object
+            description: ApiResponseV2OfString
+  /v2/healthplan/providers:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Health Plan Provider
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfHealthPlanProviderViewModel
+          schema:
+            type: object
+            description: ApiResponseV2OfHealthPlanProviderViewModel
+  /v2/integrations/partner:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: PartnerDTO
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: PartnerDTO
+      tags:
+        - Partner
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPartnerDTO
+          schema:
+            type: object
+            description: ApiResponseV2OfPartnerDTO
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: PartnerDTO
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: PartnerDTO
+      tags:
+        - Partner
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPartnerDTO
+          schema:
+            type: object
+            description: ApiResponseV2OfPartnerDTO
+  /v2/integrations/partner/{partnerId}:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: partnerId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Partner
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: partnerId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Partner
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: partnerId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Partner
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/patients/familygroup/adults?authorizedOnly={authorizedOnly}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: authorizedOnly 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Family Group
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPatientDataForProfilesList
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientDataForProfilesList
+  /v2/patients/{patientId}/familygroup/adults?authorizedOnly={authorizedOnly}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: authorizedOnly 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Family Group
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPatientDataForProfilesList
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientDataForProfilesList
+  /v2/patients/familyprofiles/dependents:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Family Group
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfFamilyMember
+          schema:
+            type: object
+            description: ApiResponseV2OfFamilyMember
+  /v2/patients/{patientId}/familyprofiles/dependents:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Family Group
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfFamilyMember
+          schema:
+            type: object
+            description: ApiResponseV2OfFamilyMember
+  /v2/patients/familygroup/{patientId}/relationship:
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: DependentRelationship
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: DependentRelationship
+      tags:
+        - Family Group
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfBoolean
+          schema:
+            type: object
+            description: ApiResponseV2OfBoolean
+  /v2/familygroups/dependents:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: AddPatientProfileRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: AddPatientProfileRequest
+      tags:
+        - Family Group
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPatientProfileResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientProfileResponse
+  /v2/familygroups/couser:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: AddCoUserRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: AddCoUserRequest
+      tags:
+        - Family Group
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfAddCoUserResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfAddCoUserResponse
+  /v2.1/patients/registrations/availability:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Patient Registrations
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfRegistrationAvailabilityResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfRegistrationAvailabilityResponse
+  /v2/integrations/hospitalpartner/{hospitalId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: HospitalPartnerRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: HospitalPartnerRequest
+      tags:
+        - Hospital Partner
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfHospitalPartnerDto
+          schema:
+            type: object
+            description: ApiResponseV2OfHospitalPartnerDto
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: HospitalPartnerRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: HospitalPartnerRequest
+      tags:
+        - Hospital Partner
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfHospitalPartnerDto
+          schema:
+            type: object
+            description: ApiResponseV2OfHospitalPartnerDto
+  /v2/integrations/hospitalpartner/{hospitalId}/partner/{partnerId}:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: partnerId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Hospital Partner
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: partnerId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Hospital Partner
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: partnerId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Hospital Partner
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/integrations/hospitalpartner/{hospitalId}/partner/{partnerId}/fields:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: partnerId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Hospital Partner
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfHospitalPartnerField
+          schema:
+            type: object
+            description: ApiResponseV2OfHospitalPartnerField
+  /v2/integrations/eprescription/ssocontext:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: EPrescriptionSsoContextRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: EPrescriptionSsoContextRequest
+      tags:
+        - EPrescription
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfEPrescriptionSsoContext
+          schema:
+            type: object
+            description: ApiResponseV2OfEPrescriptionSsoContext
+  /v2/clinicians/staffprofiles/{userId}:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: userId
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - HospitalStaff
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: userId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: StaffProfileDTO
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: StaffProfileDTO
+      tags:
+        - HospitalStaff
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: userId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: StaffProfileDTO
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: StaffProfileDTO
+      tags:
+        - HospitalStaff
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/clinicians/pendingstaffprofile:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: StaffAccountModel
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: StaffAccountModel
+      tags:
+        - HospitalStaff
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfCreatePendingStaffProfileResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfCreatePendingStaffProfileResponse
+  /v2/clinicians/staffprofile:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: StaffAccountModelRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: StaffAccountModelRequest
+      tags:
+        - HospitalStaff
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfCreateStaffProfileResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfCreateStaffProfileResponse
+  /v2/clinicians/pendingstaffprofile/{pendingUserId}:
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: pendingUserId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: StaffAccountModel
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: StaffAccountModel
+      tags:
+        - HospitalStaff
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/clinicians/eprescription:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - HospitalStaff
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfDoctorSettingInfo
+          schema:
+            type: object
+            description: ApiResponseV2OfDoctorSettingInfo
+  /v2/clinicians/patientinteraction?roles={roles}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: roles 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - HospitalStaff
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfBoolean
+          schema:
+            type: object
+            description: ApiResponseV2OfBoolean
+  /v2/clinicians/staffs/{adminUserId}/tags:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: adminUserId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - HospitalStaff
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfBoolean
+          schema:
+            type: object
+            description: ApiResponseV2OfBoolean
+  /v2/hospitals/stafflist?searchtext={searchtext}&tagIds={tagIds}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: searchtext 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: tagIds 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - HospitalStaff
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfHospitalStaffListRecord
+          schema:
+            type: object
+            description: ApiResponseV2OfHospitalStaffListRecord
+  /v2/clinicians/roles/{roleId}/staffprofiles:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: roleId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - HospitalStaff
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfHospitalStaffProfile
+          schema:
+            type: object
+            description: ApiResponseV2OfHospitalStaffProfile
+  /v2.1/providers/{hospitalId}/clinicians?search={search}&take={take}&skip={skip}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: search 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: take 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: skip 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - HospitalStaff
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfClinicianPersonResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfClinicianPersonResponse
+  /v2.1/providers/{hospitalId}/users/{clinicianUserId}/clinician/person:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: clinicianUserId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - HospitalStaff
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfClinicianPersonResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfClinicianPersonResponse
+  /v2/documents/{documentType}/hospitals/{hospitalId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: documentType 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Hospital Documents
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfString
+          schema:
+            type: object
+            description: ApiResponseV2OfString
+  /v2.1/admin/postalcodes:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: PostalCode
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: PostalCode
+      tags:
+        - Postal Codes
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfPostalCode
+          schema:
+            type: object
+            description: ApiResponseV2OfPostalCode
+  /v2.1/admin/postalcodes/{id}:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Postal Codes
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfPostalCode
+          schema:
+            type: object
+            description: ApiResponseV2OfPostalCode
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Postal Codes
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfPostalCode
+          schema:
+            type: object
+            description: ApiResponseV2OfPostalCode
+  /v2.1/admin/postalcodes?PostalCodeId={PostalCodeId}&SearchText={SearchText}&MaxRows={MaxRows}&Country={Country}&CountryCode={CountryCode}&State={State}&StateCode={StateCode}&City={City}&PostalCode={PostalCode}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: PostalCodeId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: SearchText 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: MaxRows 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Country 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: CountryCode 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: State 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: StateCode 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: City 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: PostalCode 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Postal Codes
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfPostalCodeResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfPostalCodeResponse
+  /v2.1/admin/rules?RuleTemplateId={RuleTemplateId}&ProviderId={ProviderId}&ConditionTypeId={ConditionTypeId}&ConditionSource={ConditionSource}&Sequence={Sequence}&Id={Id}&Description={Description}&SatisfiedMessage={SatisfiedMessage}&UnsatisfiedMessage={UnsatisfiedMessage}&StatusCode={StatusCode}&MaxRows={MaxRows}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: RuleTemplateId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: ProviderId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: ConditionTypeId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: ConditionSource 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Sequence 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Description 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: SatisfiedMessage 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: UnsatisfiedMessage 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: StatusCode 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: MaxRows 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfIRuleResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfIRuleResponse
+  /v2.1/admin/rules/{id}:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: RuleDetailsRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: RuleDetailsRequest
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfRuleResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfRuleResponse
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: RuleDetailsRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: RuleDetailsRequest
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfRuleResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfRuleResponse
+  /v2.1/admin/rules:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: RuleDetailsRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: RuleDetailsRequest
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfRuleResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfRuleResponse
+  /v2.1/admin/rules/subject-address-meta-rules?RuleTemplateId={RuleTemplateId}&ProviderId={ProviderId}&ConditionTypeId={ConditionTypeId}&ConditionSource={ConditionSource}&Sequence={Sequence}&Id={Id}&Description={Description}&SatisfiedMessage={SatisfiedMessage}&UnsatisfiedMessage={UnsatisfiedMessage}&StatusCode={StatusCode}&MaxRows={MaxRows}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: RuleTemplateId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: ProviderId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: ConditionTypeId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: ConditionSource 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Sequence 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Description 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: SatisfiedMessage 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: UnsatisfiedMessage 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: StatusCode 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: MaxRows 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfIRuleResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfIRuleResponse
+  /v2.1/admin/rules/subject-address-rules:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: SubjectAddressRuleRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: SubjectAddressRuleRequest
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfRuleResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfRuleResponse
+  /v2.1/admin/rules/{id}/subject-address-rules:
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: SubjectAddressRuleRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: SubjectAddressRuleRequest
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfRuleResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfRuleResponse
+  /v2.1/admin/rules/subject-distance-rules:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: SubjectDistanceRuleRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: SubjectDistanceRuleRequest
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfRuleResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfRuleResponse
+  /v2.1/admin/rules/{id}/subject-distance-rules:
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: SubjectDistanceRuleRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: SubjectDistanceRuleRequest
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfRuleResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfRuleResponse
+  /v2.1/admin/rules/patient-organization-rules:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: PatientOrganizationRuleRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: PatientOrganizationRuleRequest
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfRuleResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfRuleResponse
+  /v2.1/admin/rules/{id}/patient-organization-rules:
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: PatientOrganizationRuleRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: PatientOrganizationRuleRequest
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfRuleResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfRuleResponse
+  /v2.1/admin/rules/rule-templates:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: RuleTemplateRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: RuleTemplateRequest
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfRuleTemplateResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfRuleTemplateResponse
+  /v2.1/admin/rules/rule-templates/{id}:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfRuleTemplateResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfRuleTemplateResponse
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfRuleTemplateResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfRuleTemplateResponse
+  /v2.1/admin/rules/rule-templates?RuleSetId={RuleSetId}&RuleTypeId={RuleTypeId}&Priority={Priority}&ImagePath={ImagePath}&Id={Id}&Description={Description}&SatisfiedMessage={SatisfiedMessage}&UnsatisfiedMessage={UnsatisfiedMessage}&StatusCode={StatusCode}&MaxRows={MaxRows}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: RuleSetId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: RuleTypeId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Priority 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: ImagePath 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Description 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: SatisfiedMessage 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: UnsatisfiedMessage 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: StatusCode 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: MaxRows 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfRuleTemplateResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfRuleTemplateResponse
+  /v2.1/admin/rules/rule-sets:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: RuleSetRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: RuleSetRequest
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfRuleSetResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfRuleSetResponse
+  /v2.1/admin/rules/rule-sets/{id}:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfRuleSetResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfRuleSetResponse
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfRuleSetResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfRuleSetResponse
+  /v2.1/admin/rules/rule-sets?RuleCategoryId={RuleCategoryId}&Id={Id}&Description={Description}&SatisfiedMessage={SatisfiedMessage}&UnsatisfiedMessage={UnsatisfiedMessage}&StatusCode={StatusCode}&MaxRows={MaxRows}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: RuleCategoryId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Description 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: SatisfiedMessage 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: UnsatisfiedMessage 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: StatusCode 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: MaxRows 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfRuleSetResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfRuleSetResponse
+  /v2.1/admin/rules/rule-categories:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Rules
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfKeyValuePairOfRuleCategoryCodeAndString
+          schema:
+            type: object
+            description: ApiResponseV2OfKeyValuePairOfRuleCategoryCodeAndString
+  /v2/patients/consultations/{consultationId}/all:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: consultationId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patient Consultations
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPatientConsultationResult
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientConsultationResult
+  /v2/patients/consultations:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: OnDemandConsultationRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: OnDemandConsultationRequest
+      tags:
+        - Patient Consultations
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfOnDemandResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfOnDemandResponse
+  /v2.1/patients/consultations/on-demand:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: OnDemandConsultationRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: OnDemandConsultationRequest
+      tags:
+        - Patient Consultations
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfOnDemandResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfOnDemandResponse
+  /v2.1/patients/{personId}/encounters:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: personId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: ScheduledEncounterRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: ScheduledEncounterRequest
+      tags:
+        - Patient Consultations
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfApiModels.ScheduledConsultationResult
+          schema:
+            type: object
+            description: ApiResponseV2OfApiModels.ScheduledConsultationResult
+  /v2/patients/consultations/{consultationId}/intake:
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: consultationId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: IntakeQuestionnaire
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: IntakeQuestionnaire
+      tags:
+        - Patient Consultations
+        - Version 2
+      responses:
+        200:
+          description: None
+          schema:
+            type: object
+            description: None
+  /v2/patients/{patientId}/consultations/status/{statusId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: statusId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patient Consultations
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPatientConsultationInfo
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientConsultationInfo
+  /v2/clinicians/consultations/{consultation}?fields={fields}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: consultation 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: fields 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Encounters
+        - Version 2
+      responses:
+        200:
+          description: None
+          schema:
+            type: object
+            description: None
+  /v2/integrations/patients/synced/{patientId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Patients Integration
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfSyncedDTO
+          schema:
+            type: object
+            description: ApiResponseV2OfSyncedDTO
+  /v2.1/patients/favorite-clinicians:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: PersonRecord
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: PersonRecord
+      tags:
+        - Favorites
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfPersonRecord
+          schema:
+            type: object
+            description: ApiResponseV2OfPersonRecord
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: PersonRecord
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: PersonRecord
+      tags:
+        - Favorites
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfPersonRecord
+          schema:
+            type: object
+            description: ApiResponseV2OfPersonRecord
+  /v2.1/patients/favorite-clinicians/{targetId}:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: targetId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Favorites
+        - Version 2.1
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/hospitaladdress/{id}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Hospital Address
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfHospitalAddress
+          schema:
+            type: object
+            description: ApiResponseV2OfHospitalAddress
+  /v2/hospitalAddress:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Hospital Address
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfHospitalAddress
+          schema:
+            type: object
+            description: ApiResponseV2OfHospitalAddress
+  /v2/reports/consultation/{id}?include={include}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: include 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Reports
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfConsultationReportResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfConsultationReportResponse
+  /v2/reports/consultation/chat/{id}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Reports
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfListOfChatNote
+          schema:
+            type: object
+            description: ApiResponseV2OfListOfChatNote
+  /v2/patients/payments:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: PaymentData
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: PaymentData
+      tags:
+        - Payments
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPaymentProfilePostResult
+          schema:
+            type: object
+            description: ApiResponseV2OfPaymentProfilePostResult
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: PaymentData
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: PaymentData
+      tags:
+        - Payments
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPaymentProfilePostResult
+          schema:
+            type: object
+            description: ApiResponseV2OfPaymentProfilePostResult
+  /v2.1/patients/{patientId}/payments/credits:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Payments
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfPatientPaymentResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientPaymentResponse
+  /v2/clinicians/staff/rolefunctions:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Role Functions
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfBoolean
+          schema:
+            type: object
+            description: ApiResponseV2OfBoolean
+  /v2/doctorspeciality/hospital/{hospitalId}?searchText={searchText}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: searchText 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Doctor Specializations
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfDoctorSpeciality
+          schema:
+            type: object
+            description: ApiResponseV2OfDoctorSpeciality
+  /v2/codesets?hospitalId={hospitalId}&fields={fields}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: fields 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - CodeSets
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfCodeSetResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfCodeSetResponse
+  /v2/patients/{email}/mail?type={type}&hospitalId={hospitalId}:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: email 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: type 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Mail
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/patients/mail/resetPassword:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: ResetPasswordRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: ResetPasswordRequest
+      tags:
+        - Mail
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/mail/resetPassword:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: ResetPasswordRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: ResetPasswordRequest
+      tags:
+        - Mail
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/emails/cousers/invitations:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: CoUserEmailInvitationRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: CoUserEmailInvitationRequest
+      tags:
+        - Mail
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/mail/participants/{participantId}:
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: participantId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: ParticipantEmailInvitationRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: ParticipantEmailInvitationRequest
+      tags:
+        - Mail
+        - Version 2
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/patients/consultations/{consultationId}/participants:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: consultationId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: ConsultationParticipantRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: ConsultationParticipantRequest
+      tags:
+        - Consultation Participants
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfConsultationParticipantResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfConsultationParticipantResponse
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: consultationId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: ConsultationParticipantRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: ConsultationParticipantRequest
+      tags:
+        - Consultation Participants
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfConsultationParticipantResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfConsultationParticipantResponse
+  /v2/patients/consultations/participants:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Consultation Participants
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfListOfConsultationParticipantResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfListOfConsultationParticipantResponse
+  /v2/patients/consultations/participants/{participantId}:
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: participantId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: ConsultationParticipantRequest
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: ConsultationParticipantRequest
+      tags:
+        - Consultation Participants
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfConsultationParticipantResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfConsultationParticipantResponse
+  /v2.1/clinicians/appointments:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Appointments
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfAppointmentResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfAppointmentResponse
+    post:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Appointments
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfAppointmentResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfAppointmentResponse
+  /v2.1/clinicians/appointments/{appointmentId}:
+    delete:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: appointmentId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Appointments
+        - Version 2.1
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: appointmentId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Appointments
+        - Version 2.1
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: appointmentId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Appointments
+        - Version 2.1
+      responses:
+        200:
+          description: IHttpActionResult
+          schema:
+            type: object
+            description: IHttpActionResult
+  /v2/clinicianprofiles/{id}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Clinician Profiles
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfClinicianProfilesResult
+          schema:
+            type: object
+            description: ApiResponseV2OfClinicianProfilesResult
+  /v2/admin/consultations?ConsultationStatus={ConsultationStatus}&PatientId={PatientId}&PhysicianUserId={PhysicianUserId}&Take={Take}&Skip={Skip}&StartDate={StartDate}&EndDate={EndDate}&PatientOrPhysicianNameFilter={PatientOrPhysicianNameFilter}&IncludeDependents={IncludeDependents}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: ConsultationStatus 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: PatientId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: PhysicianUserId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Take 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: Skip 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: StartDate 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: EndDate 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: PatientOrPhysicianNameFilter 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: IncludeDependents 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Consultation
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPatientConsultationInfo
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientConsultationInfo
+  /v2.1/providers/profile-images?hospitalId={hospitalId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Hospital Images
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfImageUploadResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfImageUploadResponse
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Hospital Images
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfImageUploadResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfImageUploadResponse
+  /v2/organizationtypes:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: Organization
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: Organization
+      tags:
+        - Organization Types
+        - Version 2
+      responses:
+        200:
+          description: None
+          schema:
+            type: object
+            description: None
+    post:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: Organization
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: Organization
+      tags:
+        - Organization Types
+        - Version 2
+      responses:
+        200:
+          description: None
+          schema:
+            type: object
+            description: None
+  /v2/organizationtypes/{id}:
+    put:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: id 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+        - name: OrganizationTypeCode
+          in: body
+          description: TODO
+          required: true
+          schema:
+            type: object
+            description: OrganizationTypeCode
+      tags:
+        - Organization Types
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfOrganizationTypeCode
+          schema:
+            type: object
+            description: ApiResponseV2OfOrganizationTypeCode
+  /v2/hospitals?patient={patient}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patient 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Hospital
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfPatientHospitalsResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientHospitalsResponse
+  /v2.1/providers?patient={patient}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: patient 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Hospital
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfPatientHospitalsResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfPatientHospitalsResponse
+  /v2/hospital:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Hospital
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfHospitalInfo
+          schema:
+            type: object
+            description: ApiResponseV2OfHospitalInfo
+  /v2/hospital/{hospitalId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Hospital
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfHospitalInfo
+          schema:
+            type: object
+            description: ApiResponseV2OfHospitalInfo
+  /v2.1/providers/{hospitalId}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: hospitalId 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Hospital
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfProviderResponse
+          schema:
+            type: object
+            description: ApiResponseV2OfProviderResponse
+  /v2/hospitals/providers/{partialName}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: partialName 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Hospital
+        - Version 2
+      responses:
+        200:
+          description: ApiResponseV2OfHospitalInfo
+          schema:
+            type: object
+            description: ApiResponseV2OfHospitalInfo
+  /v2.1/providers/list/{partialName}:
+    get:
+      summary: TODO 
+      description: TODO 
+      parameters:
+        - name: partialName 
+          in: path
+          description: TODO
+          required: true
+          type: string
+          format: string
+      tags:
+        - Hospital
+        - Version 2.1
+      responses:
+        200:
+          description: ApiResponseV2OfHospitalInfo
+          schema:
+            type: object
+            description: ApiResponseV2OfHospitalInfo
+  /v2/hospitals/within-users-limit:
+    get:
+      summary: TODO 
+      description: TODO 
+      tags:
+        - Hospital
+        - Version 2
+      responses:
+        200:
+          description: None
+          schema:
+            type: object
+            description: None
