@@ -1,28 +1,30 @@
-# virtualcare-api-docs
-Documentation for the SnapMD Virtual Care API
+# VirtualCare REST API OpenAPI Specification
+[![Build Status](https://travis-ci.org/SnapMD/virtualcare-api-docs.svg?branch=master)](https://travis-ci.org/SnapMD/virtualcare-api-docs)
 
-Documentation is written in [Markdown](https://daringfireball.net/projects/markdown/) and is accessible via our [GitHub Wiki](https://github.com/SnapMD/virtualcare-api-docs/wiki) or by downloading the repository.
+## Links
 
-API call reference for the REST API can be found at [https://sandbox.connectedcare.md/api/Help/](https://sandbox.connectedcare.md/api/Help/).
+- Documentation(ReDoc): https://snapmd.github.io/virtualcare-api-docs/
+- SwaggerUI: https://snapmd.github.io/virtualcare-api-docs/swagger-ui/
+- Look full spec:
+    + JSON https://snapmd.github.io/virtualcare-api-docs/swagger.json
+    + YAML https://snapmd.github.io/virtualcare-api-docs/swagger.yaml
+- Preview spec version for branch `[branch]`: https://snapmd.github.io/virtualcare-api-docs/preview/[branch]
 
-## The Wiki submodule
+**Warning:** All above links are updated only after Travis CI finishes deployment
 
-The Wiki can be accessed via the GitHub UI, but it can also be managed locally as a collection of Markdown files. For quick access it has been added as a submodule. To check out the documentation repository, run
+## Working on specification
+### Install
 
-    $ git clone https://github.com/SnapMD/virtualcare-api-docs.git
+1. Install [Node JS](https://nodejs.org/)
+2. Clone repo and `cd`
+    + Run `npm install`
 
-load the submodule, run
+### Usage
 
-    $ cd virtualcare-api-docs.git
-    $ git submodule init
-    $ git submodule update
-
-This will load the wiki locally.
-
-Alternatively, the wiki can be loaded directly if you don't need access to the example code.
-
-    $ git clone https://github.com/SnapMD/virtualcare-api-docs.wiki.git
-
-### Contributing
-
-We welcome your input! If you would like to contribute to our documentation or code samples, feel free to issue pull requests with your updates.
+1. Run `npm start`
+2. Checkout console output to see where local server is started. You can use all [links](#links) (except `preview`) by replacing https://snapmd.github.io/virtualcare-api-docs/ with url from the message: `Server started <url>`
+3. Make changes using your favorite editor or `swagger-editor` (look for URL in console output)
+4. All changes are immediately propagated to your local server, moreover all documentation pages will be automagically refreshed in a browser after each change
+**TIP:** you can open `swagger-editor`, documentation and `swagger-ui` in parallel
+5. Once you finish with the changes you can run tests using: `npm test`
+6. Share you changes with the rest of the world by pushing to GitHub :smile:
