@@ -1292,7 +1292,9 @@ paths:
         format: int32
       responses:
         200:
-          $ref: "#/definitions/SnapMD.VirtualCare.ApiModels.ClinicianGroupResponse"
+          description: The physicians connected to the given group.
+          schema:
+            $ref: "#/definitions/SnapMD.VirtualCare.ApiModels.ClinicianGroupResponse"
         401:
           description: The group's hospital ID does not match the current user's hospital ID.
         404:
