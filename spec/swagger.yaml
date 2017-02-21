@@ -1926,8 +1926,8 @@
         tags: 
           - "Administrative Functions"
           - "Account Management and SSO"
-        summary: "v2~admin~patients~onboardEmailSetting get-summary"
-        description: "v2~admin~patients~onboardEmailSetting get-details"
+        summary: "Check whether a hospital has the ability to send emails to patients to create user passwords."
+        description: "This endpoint throws an exception if the hospital does not have the proper SSO settings configured."
         responses: 
           200: 
             description: "Whether the hospital can send onboarding emails to patients."
