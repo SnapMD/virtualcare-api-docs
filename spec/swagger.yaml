@@ -3,6 +3,9 @@
   info: 
     version: "v2"
     title: "VirtualCare REST API"
+    x-logo:
+      url: "http://snap.md/wp-content/uploads/2017/01/logo.png"
+      backgroundColor: "#FFFFFF"
     description: "This is the most current VirtualCare API.\n\nThis document cannot be used to test endpoints at the present time, but this may change in the future.\n\nAny query parameters must be referred to by the names given. The names of path and body parameters are given for the sake of clarity, and these parameters do not need to be referred to by name in API calls.\n\nSome endpoints are listed as having the potential to multiple different error messages for a particular HTTP status. In these cases, only one of these errors is returned from any given response; the API returns the first error it encounters.\n\nAny place in this document where a field or object is listed as *Circular* indicates a potentially circular reference. These references will be redone in a future version of the API. The schemas of these objects can be determined by following the given references to relevant models."
   host: "snap.local"
   basePath: "/api"
