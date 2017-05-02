@@ -1,0 +1,2330 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>SnapMD VirtualCare REST API</title>
+    
+</head>
+<body>
+    
+
+<link type="text/css" href="SnapMD%20VirtualCare%20REST%20API_files/HelpPage.css" rel="stylesheet">
+<header class="help-page">
+    <div class="content-wrapper">
+        <div class="float-left">
+            <h1>SnapMD VirtualCare REST API</h1>
+        </div>
+    </div>
+</header>
+<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper">
+            <h2>Introduction</h2>
+            <p>
+                It is our goal to keep improving our documentation and 
+to keep it up-to-date. If you have any questions, please contact
+                your SnapMD representative. If there are problems with 
+the documentation, please 
+                <a href="https://github.com/SnapMD/virtualcare-api-docs/issues">report an issue</a> on GitHub.
+            </p>
+            <h3>
+                 API Credentials
+            </h3>
+
+            <p>
+                API credentials consist of a unique identifier and an 
+SHA1 hash. The values must be passed in your requests via custom
+                HTTP headers <strong>X-Developer-Id</strong> and <strong>X-Api-Key</strong>. These will be provided by SnapMD developers. 
+                You will begin with sandbox keys, and be provided with separate production keys when your app is approved.
+            </p>
+
+            <h3>
+                Tokens
+            </h3>
+
+            <p>
+                Authentication in the API is handled through OAuth2 
+bearer token authentication. To retrieve
+                a token, you POST a login resource to the API. Any 
+activity on behalf of a user must use this method of authentication.
+            </p>
+
+            <h3>
+                POST v2/account/token
+            </h3>
+
+            <h4 class="sample-header">application/json, text/json</h4>
+            <div class="sample-content">
+                <span><b>Sample:</b></span>
+                
+                <pre><code>POST https://sandbox.connectedcare.md/api/v2/account/token HTTP/1.1
+User-Agent: Fiddler
+Content-Type: application/json
+X-Developer-Id: ******
+X-Api-Key: ******
+
+{ 
+  'userTypeId': 1, // 1: patient/customer, 2: clinician/admin
+  'hospitalId' : 1,
+  'email' : &lt;email&gt;,
+  'password' : &lt;password&gt;
+}
+</code></pre></div>
+
+            <h3>Response Format</h3>
+            <h4 class="sample-header">application/json, text/json</h4>
+            <div class="sample-content">
+                <span><b>Sample:</b></span>
+
+<pre><code>{
+  "data": [
+    {
+      "access_token": &lt;token&gt;
+    }
+  ],
+  "total": 1
+}
+</code></pre>
+            </div>
+            <h3>
+                GET api/hello
+            </h3>
+
+            <p>We have our version of Hello World that you can use to verify things are set up correctly.</p>
+
+            <h3>Request Information</h3>
+
+            <h4 class="sample-header">application/json, text/json</h4>
+            <div class="sample-content">
+                <span><b>Sample:</b></span>
+
+                <pre><code>GET https://sandbox.connectedcare.md/api/hello  HTTP/1.1
+User-Agent: Fiddler
+Content-Type: application/json
+Authorization: Bearer ***********
+X-Developer-Id: ******
+X-Api-Key: ******
+</code></pre>
+                </div>
+                <p>The value of "hello" is the username associated with the token; Response body:</p>
+            <h4 class="sample-header">application/json, text/json</h4>
+            <div class="sample-content">
+                <span><b>Sample:</b></span>
+
+                <pre><code>{ "hello" : string } 
+</code></pre>
+            </div>
+            <h2>API Call Reference</h2>
+            <p>
+                Documentation for individual API calls can be found below.
+            </p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+
+
+<h2 id="OperatingHours">OperatingHours</h2>
+<p>Represents APIs to manage hospital operating hours.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-hospital-hospitalId-operatinghours">GET v2/hospital/{hospitalId}/operatinghours</a></td>
+            <td class="api-documentation">
+<p>Get hospital operating hours.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-hospital-hospitalId-operatinghours">POST v2/hospital/{hospitalId}/operatinghours</a></td>
+            <td class="api-documentation">
+<p>Adds or Updates hospital operating hours.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-hospital-hospitalId-operatinghours">PUT v2/hospital/{hospitalId}/operatinghours</a></td>
+            <td class="api-documentation">
+<p>Adds or Updates hospital operating hours.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-v2-hospital-operatinghours-id">DELETE v2/hospital/operatinghours/{id}</a></td>
+            <td class="api-documentation">
+<p>Deletes hospital operating hours by operatingHoursId.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="ConsultationChat">ConsultationChat</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-consultations-consultationId-chat">GET consultations/{consultationId}/chat</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-consultations-consultationId-preconsultation-chat">GET consultations/{consultationId}/preconsultation-chat</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-participants-consultations-consultationId-chat">GET participants/consultations/{consultationId}/chat</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Locations">Locations</h2>
+<p>Returns Hospital-specific locations for patients to specify which hospital subdivision of which they are a patron.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-locations-id">PUT v2/locations/{id}</a></td>
+            <td class="api-documentation">
+<p>Updates location name by location id.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-locations">GET v2/locations</a></td>
+            <td class="api-documentation">
+<p>Gets locations for logged in user's hospital.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-locations">POST v2/locations</a></td>
+            <td class="api-documentation">
+<p>Inserts a new Location resource for the hospital.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Images">Images</h2>
+<p>API for images that can be attached to a user, client organization, or provider.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-images-id">GET v2.1/images/{id}</a></td>
+            <td class="api-documentation">
+<p>Gets the profile image for the specified resource.  If the Accept header is application/json, it will return a
+                response
+                that includes the image as a Base64 string.  If it is set to image/png it will return the image formatted as an
+                image.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2.1-images">POST v2.1/images</a></td>
+            <td class="api-documentation">
+<p>Posts the image to the database for the resource identified in the URI querystring.
+                To post an image you must set the Content-Type header to multipart/form-data.
+                The response headers will include the Location header with the url where the new image
+                can be found.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="PatientSearch">PatientSearch</h2>
+<p>API to search patients.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-clinicians-patients_SearchText_includeInactive">GET clinicians/patients?SearchText={SearchText}&amp;includeInactive={includeInactive}</a></td>
+            <td class="api-documentation">
+<p>Search patient by name.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="PatientsIntegration">PatientsIntegration</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-integrations-patients-synced-patientId">GET v2/integrations/patients/synced/{patientId}</a></td>
+            <td class="api-documentation">
+<p>Check if a patient profile is synced in the third party EHR</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="ClinicianProfileImages">ClinicianProfileImages</h2>
+<p>API for profile images that can be attached to a user, client organization, or provider.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2.1-clinicians-profile-images_clinicianUserId">POST v2.1/clinicians/profile-images?clinicianUserId={clinicianUserId}</a></td>
+            <td class="api-documentation">
+<p>Posts the image to the database for the resource identified in the URI querystring.
+            To post an image you must set the Content-Type header to multipart/form-data.
+            The response headers will include the Location header with the url where the new image
+            can be found.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-ClinicianProfileImages-SaveClinicianProfileImage_clinicianUserId">POST ClinicianProfileImages/SaveClinicianProfileImage?clinicianUserId={clinicianUserId}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-ClinicianProfileImages_clinicianUserId">POST ClinicianProfileImages?clinicianUserId={clinicianUserId}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Copay">Copay</h2>
+<p>Api for patient copays.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-patients-copay-consultationId-paymentstatus">GET patients/copay/{consultationId}/paymentstatus</a></td>
+            <td class="api-documentation">
+<p>Gets the payment status for the consultation copay. The value of the "data" field is a boolean that returns true
+            if payment has been successful or if payment is not required.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-copay-consultationId-paymentstatus">GET v2/patients/copay/{consultationId}/paymentstatus</a></td>
+            <td class="api-documentation">
+<p>Gets the payment status for the consultation copay. The value of the "data" field is a boolean that returns true
+            if payment has been successful or if payment is not required.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-patients-copay-consultationId-paymentstatus">GET v2.1/patients/copay/{consultationId}/paymentstatus</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-patients-copay">POST patients/copay</a></td>
+            <td class="api-documentation">
+<p>Make a payment.  Returns confirmation number.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-patients-copay">POST v2/patients/copay</a></td>
+            <td class="api-documentation">
+<p>Make a payment.  Returns confirmation number.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="HospitalStaff">HospitalStaff</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-clinicians-staffprofiles-userId">GET v2/clinicians/staffprofiles/{userId}</a></td>
+            <td class="api-documentation">
+<p>Gets the admin staff profile.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-clinicians-pendingstaffprofile">POST v2/clinicians/pendingstaffprofile</a></td>
+            <td class="api-documentation">
+<p>Provide interface for creating new user in system.
+                New pending user will be created (invite email will be send to new user).
+                Note:
+                When new user created in system he is marked us pending, such pendings users will receive invite emails with
+                activation link.
+                Once pending users activate their accounts, they become active users.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-clinicians-staffprofile">POST v2/clinicians/staffprofile</a></td>
+            <td class="api-documentation">
+<p>Provide interface for creating new user in system for SSO.
+                New user will be created (no invite email will be send to new user).
+                Note:
+                When new user created in system he is marked active.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-clinicians-pendingstaffprofile-pendingUserId">PUT v2/clinicians/pendingstaffprofile/{pendingUserId}</a></td>
+            <td class="api-documentation">
+<p>Provide interface for editing pending users.
+                Pending user will be edited (new invite email will be send to this user).
+                Note:
+                When new user created in system he is marked us pending, such pendings users will receive invite emails with
+                activation link.
+                Once pending user activate his account, he is become a usual user.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-clinicians-staffprofiles-userId">PUT v2/clinicians/staffprofiles/{userId}</a></td>
+            <td class="api-documentation">
+<p>Updates the staff profile.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-clinicians-staffprofiles-identifier-types_role">GET v2/clinicians/staffprofiles/identifier-types?role={role}</a></td>
+            <td class="api-documentation">
+<p>Full list of active identifiers types (for hospital staff) with descriptions.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-clinicians-staffprofiles-userId-reactivate">PUT v2/clinicians/staffprofiles/{userId}/reactivate</a></td>
+            <td class="api-documentation">
+<p>Activates the staff profile.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-clinicians-eprescription">GET v2/clinicians/eprescription</a></td>
+            <td class="api-documentation">
+<p>Gets the e prescription credentials.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-v2-clinicians-staffprofiles-profileId">DELETE v2/clinicians/staffprofiles/{profileId}</a></td>
+            <td class="api-documentation">
+<p>Deletes the specified profile identifier.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-clinicians-patientinteraction_roles">GET v2/clinicians/patientinteraction?roles={roles}</a></td>
+            <td class="api-documentation">
+<p>Checks the has patient interaction.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-clinicians-staffs-adminUserId-tags">POST v2/clinicians/staffs/{adminUserId}/tags</a></td>
+            <td class="api-documentation">
+<p>Applies the or insert tag to admin user.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-hospitals-stafflist_searchtext_tagIds">GET v2/hospitals/stafflist?searchtext={searchtext}&amp;tagIds={tagIds}</a></td>
+            <td class="api-documentation">
+<p>Gets the hospital staff list.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-clinicians-roles-roleId-staffprofiles">GET v2/clinicians/roles/{roleId}/staffprofiles</a></td>
+            <td class="api-documentation">
+<p>Gets the staff profiles by role identifier.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-providers-hospitalId-clinicians_patient_search_groupIds[0]_groupIds[1]_take_skip_roleFunctions">GET
+ 
+v2.1/providers/{hospitalId}/clinicians?patient={patient}&amp;search={search}&amp;groupIds[0]={groupIds[0]}&amp;groupIds[1]={groupIds[1]}&amp;take={take}&amp;skip={skip}&amp;roleFunctions={roleFunctions}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-providers-hospitalId-users-clinicianUserId-clinician-person">GET v2.1/providers/{hospitalId}/users/{clinicianUserId}/clinician/person</a></td>
+            <td class="api-documentation">
+<p>Gets the clinician person.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="HospitalAddress">HospitalAddress</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-hospitaladdress-id">GET hospitaladdress/{id}</a></td>
+            <td class="api-documentation">
+<p>Return the hospital's active address</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-hospitaladdress-id">GET v2/hospitaladdress/{id}</a></td>
+            <td class="api-documentation">
+<p>Return the hospital's active address</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-hospitaladdress">PUT hospitaladdress</a></td>
+            <td class="api-documentation">
+<p>Saves Hospital Address.
+            //http://forums.asp.net/t/1969451.aspx?Extending+webapi+bearer+token+to+contain+custom+data</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-hospitalAddress">GET hospitalAddress</a></td>
+            <td class="api-documentation">
+<p>Return the user's hospital's address</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-hospitalAddress">GET v2/hospitalAddress</a></td>
+            <td class="api-documentation">
+<p>Return the user's hospital's address</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/OPTIONS-HospitalAddress-Options">OPTIONS HospitalAddress/Options</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/OPTIONS-HospitalAddress">OPTIONS HospitalAddress</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Telecom">Telecom</h2>
+<p>Represents endpoints to work with People and Telecoms</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-people-personId-telecoms">GET v2/people/{personId}/telecoms</a></td>
+            <td class="api-documentation">
+<p>Returns a list of telecoms for a person</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-people-personId-telecoms">POST v2/people/{personId}/telecoms</a></td>
+            <td class="api-documentation">
+<p>Creates telecom for person</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-v2-people-personId-telecoms-telecomId">DELETE v2/people/{personId}/telecoms/{telecomId}</a></td>
+            <td class="api-documentation">
+<p>Deletes telecom from person</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Departments">Departments</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-departments-hospital-hospitalId_searchText">GET v2/departments/hospital/{hospitalId}?searchText={searchText}</a></td>
+            <td class="api-documentation">
+<p>Get Lookup Data for autocomplete textbox</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Hello">Hello</h2>
+<p>Exposes endpoints for testing and general purposes.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-hello-id">GET hello/{id}</a></td>
+            <td class="api-documentation">
+<p>Represents simple hello endpoint to test that backend works fine.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-hello-api-keys">GET v2.1/hello/api-keys</a></td>
+            <td class="api-documentation">
+<p>Returns developer id and api key.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-Hello-Get">GET Hello/Get</a></td>
+            <td class="api-documentation">
+<p>Represents endpoint to test authorized user requests to the API.
+            Returns message with current user's name.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-Hello">GET Hello</a></td>
+            <td class="api-documentation">
+<p>Represents endpoint to test authorized user requests to the API.
+            Returns message with current user's name.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="UserTokens">UserTokens</h2>
+<p>Used for user temporary email tokens</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-account-user-tokens-token-codesetId">GET v2/account/user/tokens/{token}/{codesetId}</a></td>
+            <td class="api-documentation">
+<p>Validates User Token.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Tags">Tags</h2>
+<p>API to manage user tags.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-clinicians-tags">GET v2/clinicians/tags</a></td>
+            <td class="api-documentation">
+<p>Gets all tags, associated with current logged in user.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-clinicians-userId-tags">GET v2/clinicians/{userId}/tags</a></td>
+            <td class="api-documentation">
+<p>Gets tags associated with an admin user/staff.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-clinicians-hospitals-hospitalId-tags_searchText">GET v2/clinicians/hospitals/{hospitalId}/tags?searchText={searchText}</a></td>
+            <td class="api-documentation">
+<p>Finds all tags by string filter.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-v2-clinicians-tags-id">DELETE v2/clinicians/tags/{id}</a></td>
+            <td class="api-documentation">
+<p>Deletes the user tag by specified identifier.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-v2-clinicians-tags-id-staff">DELETE v2/clinicians/tags/{id}/staff</a></td>
+            <td class="api-documentation">
+<p>Removes assignment of specified tag from provided staff accounts.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-clinicians-tags">POST v2/clinicians/tags</a></td>
+            <td class="api-documentation">
+<p>Creates new user tag with specified details (description).</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-clinicians-tags-id-staff">POST v2/clinicians/tags/{id}/staff</a></td>
+            <td class="api-documentation">
+<p>Assigns specified tag for staff accounts.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="PublicDocuments">PublicDocuments</h2>
+<p>Represents APIs for public documents that can be viewed on pages that
+ are accesssible by unregistered users,                for example, 
+Terms &amp; Conditions on a user registration page.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-publicdocuments_documentType_hospitalId">GET v2/publicdocuments?documentType={documentType}&amp;hospitalId={hospitalId}</a></td>
+            <td class="api-documentation">
+<p>Gets the specified document type by its identifier.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="AvailabilityBlocks">AvailabilityBlocks</h2>
+<p>Provides access to AvailabilityBlock resources.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2.1-clinicians-availability-blocks">POST v2.1/clinicians/availability-blocks</a></td>
+            <td class="api-documentation">
+<p>Creates availability block and optionally a rule entries.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2.1-clinicians-availability-blocks-availabilityBlockId">PUT v2.1/clinicians/availability-blocks/{availabilityBlockId}</a></td>
+            <td class="api-documentation">
+<p>Updates availability block and/or repeating rule. If block request doesn't have a rule
+            block will be detached from it's current rule. If rule is set, block and rule will be updated.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-v2.1-clinicians-availability-blocks-availabilityBlockId">DELETE v2.1/clinicians/availability-blocks/{availabilityBlockId}</a></td>
+            <td class="api-documentation">
+<p>Deletes availability block by id.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-v2.1-clinicians-availability-blocks-availabilityBlockId-rule-availabilityBlockRuleId">DELETE v2.1/clinicians/availability-blocks/{availabilityBlockId}/rule/{availabilityBlockRuleId}</a></td>
+            <td class="api-documentation">
+<p>Deletes availability block rule and all availability blocks.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-clinicians-availability-blocks-availabilityBlockId">GET v2.1/clinicians/availability-blocks/{availabilityBlockId}</a></td>
+            <td class="api-documentation">
+<p>Returns AvailabilityBlock by ID.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-clinicians-availability-blocks">GET v2.1/clinicians/availability-blocks</a></td>
+            <td class="api-documentation">
+<p>Returns AvailabilityBlocks for arrary of clinicianIds, startDate, endDate.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-clinicians-availability-block-rules-ruleId-availability-blocks_from_to_onlyWithAppointments">GET
+ 
+v2.1/clinicians/availability-block-rules/{ruleId}/availability-blocks?from={from}&amp;to={to}&amp;onlyWithAppointments={onlyWithAppointments}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-clinicians-availability-blocks-coverage_from_to_type">GET v2.1/clinicians/availability-blocks/coverage?from={from}&amp;to={to}&amp;type={type}</a></td>
+            <td class="api-documentation">
+<p>Get availability blocks coverage time frames with user ids.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="OrganizationTypes">OrganizationTypes</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-organizationtypes">GET v2/organizationtypes</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-organizationtypes">POST v2/organizationtypes</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-organizationtypes-id">PUT v2/organizationtypes/{id}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="PatientMedicalHistory">PatientMedicalHistory</h2>
+<p>Medical history related to patients</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-medicalhistory-patientId">GET v2/patients/medicalhistory/{patientId}</a></td>
+            <td class="api-documentation">
+<p>Get patient medical history</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="FileDownload">FileDownload</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-filesharing-files-download-filePublicLinkId">GET v2.1/filesharing/files/download/{filePublicLinkId}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-files-filePublicLinkId">GET files/{filePublicLinkId}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="PatientRegistrations">PatientRegistrations</h2>
+<p>Exposes an API to access patient profile information.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-patients-registrations-availability">GET v2.1/patients/registrations/availability</a></td>
+            <td class="api-documentation">
+<p>Gets the registration availability.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="People">People</h2>
+<p>Represents endpoints to work with the Person resource.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-people_email">GET v2.1/people?email={email}</a></td>
+            <td class="api-documentation">
+<p>Gets the person by username.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-people">POST v2/people</a></td>
+            <td class="api-documentation">
+<p>Creates new person.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="TimeZone">TimeZone</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-timezone">GET timezone</a></td>
+            <td class="api-documentation">
+<p><i class="fa fa-warning"></i> This action is Obsolete: Use v2/timezones</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-timezones">GET v2/timezones</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="ConsultationParticipants">ConsultationParticipants</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-consultations-consultationId-participants_IncludeDismissed_IncludeDeclined_IncludePending_IncludeJoining_IncludeLeft_IncludeDisconnected_IncludeAll">GET
+ 
+v2/patients/consultations/{consultationId}/participants?IncludeDismissed={IncludeDismissed}&amp;IncludeDeclined={IncludeDeclined}&amp;IncludePending={IncludePending}&amp;IncludeJoining={IncludeJoining}&amp;IncludeLeft={IncludeLeft}&amp;IncludeDisconnected={IncludeDisconnected}&amp;IncludeAll={IncludeAll}</a></td>
+            <td class="api-documentation">
+<p>Returns Participants Attached to Consultation.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-consultations-participants_IncludeDismissed_IncludeDeclined_IncludePending_IncludeJoining_IncludeLeft_IncludeDisconnected_IncludeAll">GET
+ 
+v2/patients/consultations/participants?IncludeDismissed={IncludeDismissed}&amp;IncludeDeclined={IncludeDeclined}&amp;IncludePending={IncludePending}&amp;IncludeJoining={IncludeJoining}&amp;IncludeLeft={IncludeLeft}&amp;IncludeDisconnected={IncludeDisconnected}&amp;IncludeAll={IncludeAll}</a></td>
+            <td class="api-documentation">
+<p>Returns Participants Attached to Consultation.  By JWT-Participant token</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-patients-consultations-consultationId-participants">POST v2/patients/consultations/{consultationId}/participants</a></td>
+            <td class="api-documentation">
+<p>Adds or Attach (if participantId not null) a participant to consultation</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-patients-consultations-participants-participantId">PUT v2/patients/consultations/participants/{participantId}</a></td>
+            <td class="api-documentation">
+<p>Updates a participant to a consultation.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-v2-patients-consultations-participants-participantId-invitation">DELETE v2/patients/consultations/participants/{participantId}/invitation</a></td>
+            <td class="api-documentation">
+<p>Decline/Cancel participant guest invitation.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-consultations-guest-participant-token">GET v2/patients/consultations/guest-participant/token</a></td>
+            <td class="api-documentation">
+<p>Exchange token. Returns guest participant token with the same payload and invalidates old token.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="FamilyGroup">FamilyGroup</h2>
+<p>api for patient family group</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-familyGroup">GET familyGroup</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-dependentPatients">GET dependentPatients</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-familygroup-adults_authorizedOnly">GET v2/patients/familygroup/adults?authorizedOnly={authorizedOnly}</a></td>
+            <td class="api-documentation">
+<p>Returns current user's account adult members.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-patientId-familygroup-adults_authorizedOnly">GET v2/patients/{patientId}/familygroup/adults?authorizedOnly={authorizedOnly}</a></td>
+            <td class="api-documentation">
+<p>Returns patient's account adult members.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-familyprofiles-dependents">GET v2/patients/familyprofiles/dependents</a></td>
+            <td class="api-documentation">
+<p>Returns dependents for the given patient.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-patientId-familyprofiles-dependents">GET v2/patients/{patientId}/familyprofiles/dependents</a></td>
+            <td class="api-documentation">
+<p>Returns dependents for the given patient.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-patients-familygroup-patientId-relationship">PUT v2/patients/familygroup/{patientId}/relationship</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-patientDependentRelation">GET patientDependentRelation</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-familygroups-dependents">POST v2/familygroups/dependents</a></td>
+            <td class="api-documentation">
+<p>Invites a new co-user to the current patient account, or creates a dependent record if the new patient is a minor.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-familygroups-couser">POST v2/familygroups/couser</a></td>
+            <td class="api-documentation">
+<p>Invites a new co-user with blank patient profile to the current patient account</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="PatientSelfScheduling">PatientSelfScheduling</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-patients-appointments-self-scheduling-clinicians_Name_Date_AvailableOnly_OnlyMyProviders_ApplyVisibilityRules_PatientId_Gender_PracticingSinceStart_PracticingSinceEnd_Skip_Take">GET
+ 
+v2.1/patients/appointments/self-scheduling/clinicians?Name={Name}&amp;Date={Date}&amp;AvailableOnly={AvailableOnly}&amp;OnlyMyProviders={OnlyMyProviders}&amp;ApplyVisibilityRules={ApplyVisibilityRules}&amp;PatientId={PatientId}&amp;Gender={Gender}&amp;PracticingSinceStart={PracticingSinceStart}&amp;PracticingSinceEnd={PracticingSinceEnd}&amp;Skip={Skip}&amp;Take={Take}</a></td>
+            <td class="api-documentation">
+<p>Returns self-scheduling clinicians with available appointment slots based on input criteria.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-patients-appointments-self-scheduling-clinicians-userId_date">GET v2.1/patients/appointments/self-scheduling/clinicians/{userId}?date={date}</a></td>
+            <td class="api-documentation">
+<p>Returns single self-scheduling clinician with appointment slots.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Helpcenter">Helpcenter</h2>
+<p>Controller for Zendesk Helpcenter related methods            Returned helpcenter urls are valid only for 3 minutes</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-helpcenter-customer-url">GET v2/helpcenter/customer/url</a></td>
+            <td class="api-documentation">
+<p>Returns zendesk helpcenter url for customer</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-helpcenter-physician-url">GET v2/helpcenter/physician/url</a></td>
+            <td class="api-documentation">
+<p>Returns zendesk helpcenter url for physician</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-helpcenter-admin-url">GET v2/helpcenter/admin/url</a></td>
+            <td class="api-documentation">
+<p>Returns zendesk helpcenter url for admin</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="StaffAccounts">StaffAccounts</h2>
+<p>Allows client administrators to retrieve a list of their provider staff members.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-clinicians-staffaccounts_Take_Skip_TagId_RoleId_StaffNameFilter_IncludePendingDoctors_IncludeInactiveDoctors_IncludeDoctorsWithoutAppointmentPermission_IsNameFilterRequired_GroupIds">GET
+ 
+v2/clinicians/staffaccounts?Take={Take}&amp;Skip={Skip}&amp;TagId={TagId}&amp;RoleId={RoleId}&amp;StaffNameFilter={StaffNameFilter}&amp;IncludePendingDoctors={IncludePendingDoctors}&amp;IncludeInactiveDoctors={IncludeInactiveDoctors}&amp;IncludeDoctorsWithoutAppointmentPermission={IncludeDoctorsWithoutAppointmentPermission}&amp;IsNameFilterRequired={IsNameFilterRequired}&amp;GroupIds={GroupIds}</a></td>
+            <td class="api-documentation">
+<p>Returns paged list of clinicians by criteria.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-admin-userstaffprofile">GET v2/admin/userstaffprofile</a></td>
+            <td class="api-documentation">
+<p>Returns current user's staff profile with basic information to display it on clinician and admin pages.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-clinicians-profile">GET v2.1/clinicians/profile</a></td>
+            <td class="api-documentation">
+<p>Returns current user's staff profile with basic information to display it on clinician and admin pages.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-v2-clinicians-staffaccounts">DELETE v2/clinicians/staffaccounts</a></td>
+            <td class="api-documentation">
+<p>Deletes staff profile and user login.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Encounters">Encounters</h2>
+<p>Exposes methods to access encounters data.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-clinicians-consultations-consultation_fields">GET v2/clinicians/consultations/{consultation}?fields={fields}</a></td>
+            <td class="api-documentation">
+<p>Returns clinician's consultation information. For now fields can only have "status" flag.
+            Example: v2/clinicians/consultations/123?fields=status.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="PatientAdmin">PatientAdmin</h2>
+<p>API to onboard patients for a hospital from admin side.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-admin-patients_email">GET v2/admin/patients?email={email}</a></td>
+            <td class="api-documentation">
+<p>Checks to see if a user is already present in the SnapMD VCM for the requesting user's organization.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-admin-patients-onboardEmailSetting">GET v2/admin/patients/onboardEmailSetting</a></td>
+            <td class="api-documentation">
+<p>Does hospital have setting to send on board email to patient to create user's password</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-admin-patients-send-onboarding-email_email">POST v2/admin/patients/send-onboarding-email?email={email}</a></td>
+            <td class="api-documentation">
+<p>Resend on board token via email.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-admin-patients">POST v2/admin/patients</a></td>
+            <td class="api-documentation">
+<p>Import a patient with minimum required data.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-admin-patient-patientId-dependent">POST v2/admin/patient/{patientId}/dependent</a></td>
+            <td class="api-documentation">
+<p>Add dependent to patient family profile.
+                Works similar to HTTP POST 'v2/familygroups/dependents'
+                NOTE: Requires authentication.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-admin-patient-patientId-dependent-dependentId-relationship">PUT v2/admin/patient/{patientId}/dependent/{dependentId}/relationship</a></td>
+            <td class="api-documentation">
+<p>Change dependent relations and authorization status.
+                Works similar to HTTP PUT 'v2/patients/familygroup/{patientId}/relationship'
+                NOTE: Requires authentication.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-providers-hospitalId-patients_clinician_search_take_skip">GET v2.1/providers/{hospitalId}/patients?clinician={clinician}&amp;search={search}&amp;take={take}&amp;skip={skip}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-providers-hospitalId-patients-patientId">GET v2.1/providers/{hospitalId}/patients/{patientId}</a></td>
+            <td class="api-documentation">
+<p>Returns patient person record by patient identifier.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Patients">Patients</h2>
+<p>Exposes an API to access patient profile information.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-patients-profile-patientId">GET patients/profile/{patientId}</a></td>
+            <td class="api-documentation">
+<p>Returns patient profile by patientId. Checks if user is authorized to access profile information.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-profile_include_role">GET v2/patients/profile?include={include}&amp;role={role}</a></td>
+            <td class="api-documentation">
+<p>Returns current user's patient profile with additional information, requested as comma-separated flags.
+            Valid flags: AccountDetails, Physician, Pharmacy, Anatomy, Addresses, Consultations, Tracking, All.
+            Sample: GET /v2/patients/profile?include=Pharmacy,Consultations,AccountDetails,MedicalHistory,Appointments</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-patients-details_include_role">GET v2.1/patients/details?include={include}&amp;role={role}</a></td>
+            <td class="api-documentation">
+<p>Returns current user's patient profile with additional information, requested as comma-separated flags.
+            Valid flags: AccountDetails, Physician, Pharmacy, Anatomy, Addresses, Consultations, Tracking, All.
+            Sample: GET /v2/patients/profile?include=Pharmacy,Consultations,AccountDetails,MedicalHistory,Appointments</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-profiles-patientId">GET v2/patients/profiles/{patientId}</a></td>
+            <td class="api-documentation">
+<p>Returns patient profile by patientId. Checks if user is authorized to see profile info.</p><p><i class="fa fa-warning"></i> This action is Obsolete: Problematic, url looks like a misspelled version of another url.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-userprofile">GET v2/patients/userprofile</a></td>
+            <td class="api-documentation">
+<p>Returns user patient profile for display purposes, very basic view for all customer pages.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-profile-patientId_include_role">GET v2/patients/profile/{patientId}?include={include}&amp;role={role}</a></td>
+            <td class="api-documentation">
+<p>Returns patient profile selected by Id with additional information, requested as comma-separated flags.
+                Valid flags: AccountDetails, Physician, Pharmacy, Anatomy, Addresses, Consultations, Tracking, All.
+                Sample: GET /v2/patients/profile?include=Pharmacy,Consultations,AccountDetails,MedicalHistory,Appointments</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-patients-patientId-details_include_role">GET v2.1/patients/{patientId}/details?include={include}&amp;role={role}</a></td>
+            <td class="api-documentation">
+<p>Returns patient profile selected by Id with additional information, requested as comma-separated flags.
+                Valid flags: AccountDetails, Physician, Pharmacy, Anatomy, Addresses, Consultations, Tracking, All.
+                Sample: GET /v2/patients/profile?include=Pharmacy,Consultations,AccountDetails,MedicalHistory,Appointments</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-v2-patients-profiles-patientId">DELETE v2/patients/profiles/{patientId}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-patients">POST v2/patients</a></td>
+            <td class="api-documentation">
+<p>Creates new patient. Returns newly created patient record.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-profiles-identifier-types_role">GET v2/patients/profiles/identifier-types?role={role}</a></td>
+            <td class="api-documentation">
+<p>Full list of active identifiers types (for patients) with descriptions.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-patients-profile">PUT patients/profile</a></td>
+            <td class="api-documentation">
+<p>Updates patient profile for current user.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v1-patients-profile">PUT v1/patients/profile</a></td>
+            <td class="api-documentation">
+<p>Updates patient profile for current user.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-patients-updateuserprofile">PUT v2/patients/updateuserprofile</a></td>
+            <td class="api-documentation">
+<p>Updates user profile.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-patients-single-trip-registration">POST v2/patients/single-trip-registration</a></td>
+            <td class="api-documentation">
+<p>Registers new patient.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-patients-single-trip-registration-resend-onboarding-email">POST v2/patients/single-trip-registration/resend-onboarding-email</a></td>
+            <td class="api-documentation">
+<p>Resends the onboarding email.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-couser-tokens-token-email">GET v2/patients/couser-tokens/{token}/email</a></td>
+            <td class="api-documentation">
+<p>Gets email by couser token.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-patients-couser-tokens-token-patient-profile">POST v2/patients/couser-tokens/{token}/patient-profile</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-patients-account-activation">PUT v2/patients/account-activation</a></td>
+            <td class="api-documentation">
+<p>Activates user account.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-patients-cousers">POST v2/patients/cousers</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-v2.1-patients-cousers-patientId">DELETE v2.1/patients/cousers/{patientId}</a></td>
+            <td class="api-documentation">
+<p>Unlinks the co user.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-patients-authorized-patients_search_take_skip_providerPersonId">GET v2.1/patients/authorized-patients?search={search}&amp;take={take}&amp;skip={skip}&amp;providerPersonId={providerPersonId}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-patients-authorized-patients-patientId">GET v2.1/patients/authorized-patients/{patientId}</a></td>
+            <td class="api-documentation">
+<p>Gets the authorized patient-person from user's family profile.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-patients-response-rules-active">GET v2.1/patients/response-rules-active</a></td>
+            <td class="api-documentation">
+<p>Returns user patient profile for display purposes, very basic view for all customer pages.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-patients-rules-status">GET v2.1/patients/rules-status</a></td>
+            <td class="api-documentation">
+<p>Returns user patient profile for display purposes, very basic view for all customer pages.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2.1-patients-encounter-address_addressText_patientId">PUT v2.1/patients/encounter/address?addressText={addressText}&amp;patientId={patientId}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="PatientConsultations">PatientConsultations</h2>
+<p>Patient-specific consultation APIs.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-patients-consultations-consultationId-all">GET patients/consultations/{consultationId}/all</a></td>
+            <td class="api-documentation">
+<p>Get all patient information including intake form. profile info,soap note</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-consultations-consultationId-all">GET v2/patients/consultations/{consultationId}/all</a></td>
+            <td class="api-documentation">
+<p>Get all patient information including intake form. profile info,soap note</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-patients-consultations-clinicianschedulestatus-clinicianUserID">GET patients/consultations/clinicianschedulestatus/{clinicianUserID}</a></td>
+            <td class="api-documentation">
+<p>Returns if Clinician is scheduled for On-Demand consultations</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-patients-consultations-consultationId-intake">GET patients/consultations/{consultationId}/intake</a></td>
+            <td class="api-documentation">
+<p>Get Intake form of the Patient</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-patients-consultations-consultationId-patientprofile">GET patients/consultations/{consultationId}/patientprofile</a></td>
+            <td class="api-documentation">
+<p>Get Patient Profile of the Patient</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-patients-consultations-consultationId-soapnote">GET patients/consultations/{consultationId}/soapnote</a></td>
+            <td class="api-documentation">
+<p>Get Soap Note of the Patient</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-patients-consultations-CptCodes">GET patients/consultations/CptCodes</a></td>
+            <td class="api-documentation">
+<p>Get CPT Codes</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-patients-consultations-conferencekey-consultation">GET patients/consultations/conferencekey/{consultation}</a></td>
+            <td class="api-documentation">
+<p>ToDo Do not use it.. its incomplete</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-patients-consultations-consultationId-UpdateConsultationStatus_statudId">PUT patients/consultations/{consultationId}/UpdateConsultationStatus?statudId={statudId}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-patients-consultations">POST v2/patients/consultations</a></td>
+            <td class="api-documentation">
+<p>Save an on-demand consultation request.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2.1-patients-consultations-on-demand">POST v2.1/patients/consultations/on-demand</a></td>
+            <td class="api-documentation">
+<p>Save an on-demand consultation request.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2.1-patients-personId-encounters">POST v2.1/patients/{personId}/encounters</a></td>
+            <td class="api-documentation">
+<p>Create an encounter for a given patient based on appointment identifier</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-patients-consultations-consultationId-intake">PUT v2/patients/consultations/{consultationId}/intake</a></td>
+            <td class="api-documentation">
+<p>Update a consultation's primary and/or secondary concerns</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-patientId-consultations-status-statusId">GET v2/patients/{patientId}/consultations/status/{statusId}</a></td>
+            <td class="api-documentation">
+<p>Gets patient's consultations base ConsultationStatus</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-consultations-consultationId-connection-status">GET v2/patients/consultations/{consultationId}/connection-status</a></td>
+            <td class="api-documentation">
+<p>Gets the patient connection status for a consultation.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-consultations-activeconsultations">GET v2/patients/consultations/activeconsultations</a></td>
+            <td class="api-documentation">
+<p>Gets the patient Active consultation.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-v2-patients-activeconsultations-consultationId">DELETE v2/patients/activeconsultations/{consultationId}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-patients-activeconsultations-consultationId-alive-timestamp">PUT v2/patients/activeconsultations/{consultationId}/alive-timestamp</a></td>
+            <td class="api-documentation">
+<p>Updates the alive timestamp of the connection of a active consultation.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Organizations">Organizations</h2>
+<p>Exposes organization access and management methods.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-organizations">GET v2/organizations</a></td>
+            <td class="api-documentation">
+<p>Returns organizations by current user's hospital.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-organizations">POST v2/organizations</a></td>
+            <td class="api-documentation">
+<p>Creates new organization.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-organizations">PUT v2/organizations</a></td>
+            <td class="api-documentation">
+<p>Updates organization.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="PatientProfileImages">PatientProfileImages</h2>
+<p>API for profile images that can be attached to a user, client organization, or provider.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2.1-patients-profile-images_patientId">POST v2.1/patients/profile-images?patientId={patientId}</a></td>
+            <td class="api-documentation">
+<p>Posts the image to the database for the resource identified in the URI querystring.
+                To post an image you must set the Content-Type header to multipart/form-data.
+                The response headers will include the Location header with the url where the new image
+                can be found.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="AccountSettings">AccountSettings</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-accountsettings">GET v2/patients/accountsettings</a></td>
+            <td class="api-documentation">
+<p>Gets basic account settings of current authenticated user</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-patients-accountsettings">PUT v2/patients/accountsettings</a></td>
+            <td class="api-documentation">
+<p>Updates user account settings for currently authenticated user.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-patients-getNewEmailForUserToken-token">GET patients/getNewEmailForUserToken/{token}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-patients-resetEmailForUserToken-token">POST patients/resetEmailForUserToken/{token}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="RedoxDestinationEndpoint">RedoxDestinationEndpoint</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-integrations-redox-endpoint-challenge">GET v2/integrations/redox/endpoint/{challenge}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-integrations-redox-endpoint">POST v2/integrations/redox/endpoint</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Mail">Mail</h2>
+<p>send mail to a patient</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-patients-email-mail_type_hospitalId">POST v2/patients/{email}/mail?type={type}&amp;hospitalId={hospitalId}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-patients-mail-resetPassword">POST v2/patients/mail/resetPassword</a></td>
+            <td class="api-documentation">
+<p>Sends password reset email to a patient or admin user.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-mail-resetPassword">POST v2/mail/resetPassword</a></td>
+            <td class="api-documentation">
+<p>Sends password reset email to a patient or admin user.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-emails-cousers-invitations">POST v2/emails/cousers/invitations</a></td>
+            <td class="api-documentation">
+<p>Sends or Resends Invitation to a CoUser.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-mail-participants-participantId-openconsultation">POST v2/mail/participants/{participantId}/openconsultation</a></td>
+            <td class="api-documentation">
+<p>Sends email invitation to a participant for Open Consultation.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-mail-participants-participantId">POST v2/mail/participants/{participantId}</a></td>
+            <td class="api-documentation">
+<p>Sends email invitation to a participant.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Physicians">Physicians</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-physicians">GET v2/physicians</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-physicians-id">GET v2/physicians/{id}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2.1-physicians-physicianId-online-status">PUT v2.1/physicians/{physicianId}/online-status</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Payments">Payments</h2>
+<p>Provides access to Authorize.net API for making payments.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-patients-id-payments">GET patients/{id}/payments</a></td>
+            <td class="api-documentation">
+<p>The Payments API uses the secure Authorize.net CIM gateway to store user payment methods securely.
+            Returns patient's customer profile.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-payments">GET v2/patients/payments</a></td>
+            <td class="api-documentation">
+<p>The Payments API uses the secure Authorize.net CIM gateway to store user payment methods securely.
+             Gets the Authorize.net customer profile information associated with the patient to whom the request token belongs.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-patients-payments">POST v2/patients/payments</a></td>
+            <td class="api-documentation">
+<p>Creates a new billing profile with the supplied credit card.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-patients-payments-profileId">PUT patients/payments/{profileId}</a></td>
+            <td class="api-documentation">
+<p>Updates users payment details by user profile id.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-patients-payments-profileId-creditCard">DELETE patients/payments/{profileId}/{creditCard}</a></td>
+            <td class="api-documentation">
+<p>Deletes a payment profile for the logged user.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-patients-patientId-payments-credits">GET v2.1/patients/{patientId}/payments/credits</a></td>
+            <td class="api-documentation">
+<p>Gets the patient payment credits.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2.1-patients-patientId-payments-debits_errorIfNoCredits">POST v2.1/patients/{patientId}/payments/debits?errorIfNoCredits={errorIfNoCredits}</a></td>
+            <td class="api-documentation">
+<p>Uses the patient payment credit.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="HospitalImages">HospitalImages</h2>
+<p>API for profile images that can be attached to a user, client organization, or provider.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-providers-profile-images_hospitalId">GET v2.1/providers/profile-images?hospitalId={hospitalId}</a></td>
+            <td class="api-documentation">
+<p>Gets the profile image for the specified resource.  If the Accept 
+header is application/json, it will return a
+                response that includes the image as a Base64 string.  If
+ it is set to image/png it will return the image
+                formatted as an image.  To upload an image, POST to the 
+same url, with the Content-Type header set to multipart/form-data.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2.1-providers-profile-images_hospitalId">POST v2.1/providers/profile-images?hospitalId={hospitalId}</a></td>
+            <td class="api-documentation">
+<p>Posts the image to the database for the resource identified in the URI querystring.
+                To post an image you must set the Content-Type header to multipart/form-data.
+                The response headers will include the Location header with the url where the new image
+                can be found.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="AdminReport">AdminReport</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-adminreports-reportfocuses_reportType">GET adminreports/reportfocuses?reportType={reportType}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-adminreports-reporttemplates_reportFocus">GET adminreports/reporttemplates?reportFocus={reportFocus}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-adminreports-reporttemplatesbyname_reportFocus_reportName">GET adminreports/reporttemplatesbyname?reportFocus={reportFocus}&amp;reportName={reportName}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-adminreports-reportdefaultfields_reportFocus">GET adminreports/reportdefaultfields?reportFocus={reportFocus}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-adminreports-reporttemplates">POST adminreports/reporttemplates</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-adminreports-reporttemplates">DELETE adminreports/reporttemplates</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-adminreports-reportcolumns_reportFocus">GET adminreports/reportcolumns?reportFocus={reportFocus}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-adminreports-reportfilteroperators">GET adminreports/reportfilteroperators</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-adminreports-reportdata">POST adminreports/reportdata</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-adminreports-patients-ccr_patientIds[0]_patientIds[1]">GET adminreports/patients/ccr?patientIds[0]={patientIds[0]}&amp;patientIds[1]={patientIds[1]}</a></td>
+            <td class="api-documentation">
+<p>Generates XML CCR report for target patients.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="AvailableConsultations">AvailableConsultations</h2>
+<p>API to manage the Available Consultations.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-patients-availableconsultations">GET patients/availableconsultations</a></td>
+            <td class="api-documentation">
+<p>Gets this available consultations for current logged in user.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-availableconsultations">GET v2/patients/availableconsultations</a></td>
+            <td class="api-documentation">
+<p>Gets current user's available consultations.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-patientId-consultations_status">GET v2/patients/{patientId}/consultations?status={status}</a></td>
+            <td class="api-documentation">
+<p>Gets all consultations for specified patient.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-availableconsultations-waiting">GET v2/patients/availableconsultations/waiting</a></td>
+            <td class="api-documentation">
+<p>Gets current user's available to reenter waiting consultations. (Entered by current user)</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-v2-patients-availableconsultations-waiting-consultationId">DELETE v2/patients/availableconsultations/waiting/{consultationId}</a></td>
+            <td class="api-documentation">
+<p>Marks patient waiting consultation connection as fulfilled</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-patients-patientId-availableconsultation">GET patients/{patientId}/availableconsultation</a></td>
+            <td class="api-documentation">
+<p>Gets available consultations for specified patient.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Favorites">Favorites</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-patients-favorite-clinicians">GET v2.1/patients/favorite-clinicians</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2.1-patients-favorite-clinicians">POST v2.1/patients/favorite-clinicians</a></td>
+            <td class="api-documentation">
+<p>Adds the favorite clinician.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-v2.1-patients-favorite-clinicians-targetId">DELETE v2.1/patients/favorite-clinicians/{targetId}</a></td>
+            <td class="api-documentation">
+<p>Deletes the favorite clinician.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="CodeSets">CodeSets</h2>
+<p>API to manage Codesets-related operations.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-codesets_hospitalId_fields">GET v2/codesets?hospitalId={hospitalId}&amp;fields={fields}</a></td>
+            <td class="api-documentation">
+<p>Gets specific code sets, specified in a fields query string parameter.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="MedicalCodingSystem">MedicalCodingSystem</h2>
+<p>Exposes medical codes management operations.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-snapmd-hospital-diagnosticcodingsystem-hospitalId">GET v2/snapmd/hospital/diagnosticcodingsystem/{hospitalId}</a></td>
+            <td class="api-documentation">
+<p>Get secondary medical coding system for hospital.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-snapmd-hospital-diagnosticcodingsystem-hospitalId">PUT v2/snapmd/hospital/diagnosticcodingsystem/{hospitalId}</a></td>
+            <td class="api-documentation">
+<p>Update secondary medical coding system for hospital.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-physicians-medicalcodingsconfiguration-consultationId">GET v2/physicians/medicalcodingsconfiguration/{consultationId}</a></td>
+            <td class="api-documentation">
+<p>Get medical codings configuration which include information about 
+medical codings systems that currently used in hospital to which the 
+user is belong.
+            SnapMD currently support various combination of different 
+medical codings systems.
+            CTP coding system could be On/Off for hospital.
+            Secondary diagnostic coding system (ICD-9-DX, ICD-10-DX, 
+SNOMED-CT) could be On/Off for hospital.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-physicians-medicalcodes_medicalSystem_descriptionFilter_take_skip">GET
+ 
+v2/physicians/medicalcodes?medicalSystem={medicalSystem}&amp;descriptionFilter={descriptionFilter}&amp;take={take}&amp;skip={skip}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-physicians-consultation-medicalcodes">POST v2/physicians/consultation/medicalcodes</a></td>
+            <td class="api-documentation">
+<p>Add or Update Medical Code for consultation.
+            If consultation do not contains medical code for current 
+medical codding system (medical codding system determined by 
+medicalCodeId parameter, each medical code belong to some medical 
+codding system)
+            new record will be created otherwise we update existed 
+record.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="ClinicianProfiles">ClinicianProfiles</h2>
+<p>Represents public information for a clinician that is suitable for patient use.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-clinicianprofiles-id">GET v2/clinicianprofiles/{id}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="EPrescription">EPrescription</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-integrations-eprescription-ssocontext">POST v2/integrations/eprescription/ssocontext</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="HealthPlan">HealthPlan</h2>
+<p>Controller to get/post/put/delete healthplans</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-healthplans_patientId">GET v2/healthplans?patientId={patientId}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-healthplan_policyNumber_patientId">GET healthplan?policyNumber={policyNumber}&amp;patientId={patientId}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-healthplan">POST healthplan</a></td>
+            <td class="api-documentation">
+<p>Creates a new HealthPlan object in the database</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-healthplanoperations">POST healthplanoperations</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-healthplan-id">PUT healthplan/{id}</a></td>
+            <td class="api-documentation">
+<p>Updates a health plan with the model information</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-healthplan-id">DELETE healthplan/{id}</a></td>
+            <td class="api-documentation">
+<p>Deletes from the view of a user the plan with the passed id</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="HealthPlanProvider">HealthPlanProvider</h2>
+<p>Provides methods to get the health plans providers</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-healthplan-providers">GET v2/healthplan/providers</a></td>
+            <td class="api-documentation">
+<p>Method to get all the health plan providers</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-healthplans-providers-id">GET healthplans/providers/{id}</a></td>
+            <td class="api-documentation">
+<p>Returns a single instance of a health provider using its id as identifier</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Appointments">Appointments</h2>
+<p>Exposes Appointment management methods.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2.1-clinicians-appointments">POST v2.1/clinicians/appointments</a></td>
+            <td class="api-documentation">
+<p>Creates new appointment.  A valid Availability Block ID is required.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2.1-clinicians-appointments-integrations">POST v2.1/clinicians/appointments/integrations</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2.1-clinicians-appointments-appointmentId">PUT v2.1/clinicians/appointments/{appointmentId}</a></td>
+            <td class="api-documentation">
+<p>Updates appointment</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2.1-clinicians-appointments-appointmentId-integrations">PUT v2.1/clinicians/appointments/{appointmentId}/integrations</a></td>
+            <td class="api-documentation">
+<p>Updates appointment</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-clinicians-appointments-appointmentId">GET v2.1/clinicians/appointments/{appointmentId}</a></td>
+            <td class="api-documentation">
+<p>Get appointment by Id.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-v2.1-clinicians-appointments-appointmentId">DELETE v2.1/clinicians/appointments/{appointmentId}</a></td>
+            <td class="api-documentation">
+<p>Deletes an appointment by id. Only appointment owner can delete an appointment.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-v2.1-clinicians-appointments-appointmentId-integrations">DELETE v2.1/clinicians/appointments/{appointmentId}/integrations</a></td>
+            <td class="api-documentation">
+<p>Deletes an appointment by id. Only appointment owner can delete an appointment.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-clinicians-appointments">GET v2.1/clinicians/appointments</a></td>
+            <td class="api-documentation">
+<p>Returns appointments for arrary of clinicianIds, startDate, endDate.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="PatientMedicalProfile">PatientMedicalProfile</h2>
+<p>Represents API to access patient medical history.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-patients-medicalprofile-patientId">GET v2/patients/medicalprofile/{patientId}</a></td>
+            <td class="api-documentation">
+<p>Returns patient's medical history profile by patient id.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-patients-medicalprofile">POST v2/patients/medicalprofile</a></td>
+            <td class="api-documentation">
+<p>Creates patient's medical hisotry profile.  Use GET v2/codesets?hospitalId={hospitalId}&amp;fields={fields}
+                to get a list of which codes to use.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-patients-medicalprofile-patientId">PUT v2/patients/medicalprofile/{patientId}</a></td>
+            <td class="api-documentation">
+<p>Updates patient medical history by patient id.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="TimeConvert">TimeConvert</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-convert-time_DateTime_SourceUserId_SourcePatientId_SourceTimeZoneId_TargetPatientId_TargetUserId_TargetTimeZoneId">GET
+ 
+v2.1/convert-time?DateTime={DateTime}&amp;SourceUserId={SourceUserId}&amp;SourcePatientId={SourcePatientId}&amp;SourceTimeZoneId={SourceTimeZoneId}&amp;TargetPatientId={TargetPatientId}&amp;TargetUserId={TargetUserId}&amp;TargetTimeZoneId={TargetTimeZoneId}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="PhysicianSoapNotes">PhysicianSoapNotes</h2>
+<p>Controller to manage Physician Soap notes.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-physicians-soapnotes">POST v2/physicians/soapnotes</a></td>
+            <td class="api-documentation">
+<p>Creates a new Soap Note in the system.</p><p><em>Soap Notes are the documentation written up during an encounter.</em></p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="DoctorSpecializations">DoctorSpecializations</h2>
+<p>APIs for managing doctor specializations</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-doctorspeciality-hospital-hospitalId_searchText">GET v2/doctorspeciality/hospital/{hospitalId}?searchText={searchText}</a></td>
+            <td class="api-documentation">
+<p>Gets the speciality.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Consultation">Consultation</h2>
+<p>View a filtered list of consultations. Viewing clinician must have permission to view past consultations.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-admin-consultations_ConsultationStatus_PatientId_PhysicianUserId_Take_Skip_StartDate_EndDate_PatientOrPhysicianNameFilter_IncludeDependents">GET
+ 
+v2/admin/consultations?ConsultationStatus={ConsultationStatus}&amp;PatientId={PatientId}&amp;PhysicianUserId={PhysicianUserId}&amp;Take={Take}&amp;Skip={Skip}&amp;StartDate={StartDate}&amp;EndDate={EndDate}&amp;PatientOrPhysicianNameFilter={PatientOrPhysicianNameFilter}&amp;IncludeDependents={IncludeDependents}</a></td>
+            <td class="api-documentation">
+<p>Gets a paginated list of consultations for this hospital. Note that this API requires the
+            requesting user to have View_Past_Consultations permissions.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="IntegrationsHospitalStaff">IntegrationsHospitalStaff</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-integrations-hospitalstaff-synced-userId">GET v2/integrations/hospitalstaff/synced/{userId}</a></td>
+            <td class="api-documentation">
+<p>Check if a patient profile is synced in the third party EHR</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="PatientNotes">PatientNotes</h2>
+<p>API for managing patient notes. Must verify that the logged in admin user has permission to access the data.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-admin-patientnotes-id">GET admin/patientnotes/{id}</a></td>
+            <td class="api-documentation">
+<p>Gets the patient note by specified identifier.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-admin-patientnotes-add">POST admin/patientnotes/add</a></td>
+            <td class="api-documentation">
+<p>Adds the specified patient note.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-admin-patientnotes-edit">PUT admin/patientnotes/edit</a></td>
+            <td class="api-documentation">
+<p>Edits (updates) the specified patient note.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-admin-patientnotes-id-archive">POST admin/patientnotes/{id}/archive</a></td>
+            <td class="api-documentation">
+<p>Archives the specified patient note by it's identifier.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Account">Account</h2>
+<p>API, which used for user authentication.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-account-user">GET v2/account/user</a></td>
+            <td class="api-documentation">
+<p>Gets the current logged in user details.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-account-token_jwt">GET v2/account/token?jwt={jwt}</a></td>
+            <td class="api-documentation">
+<p>Provides an authentication token to the requestor based on encrypted JWT (JSON Web Token).
+            See the full SSO documentation on GitHub at: https://github.com/SnapMD/virtualcare-api-docs/wiki/2.-Single-Sign-on</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-account-token_ssoToken_agentId">GET v2/account/token?ssoToken={ssoToken}&amp;agentId={agentId}</a></td>
+            <td class="api-documentation">
+<p>Validates a Ping Identity SSO token and agent id</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-v2-account-token">POST v2/account/token</a></td>
+            <td class="api-documentation">
+<p>Authenticates user in application.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-account-password_old_new">PUT v2/account/password?old={old}&amp;new={new}</a></td>
+            <td class="api-documentation">
+<p>Changes the password for logged in user.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-users-current-time_dateTime_userId">GET v2.1/users/current-time?dateTime={dateTime}&amp;userId={userId}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-Account-RoleFunctions">GET Account/RoleFunctions</a></td>
+            <td class="api-documentation">
+<p>Gets the user role functions.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-Account-User">GET Account/User</a></td>
+            <td class="api-documentation">
+<p>Gets the user.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-Account-Token">POST Account/Token</a></td>
+            <td class="api-documentation">
+<p>Provides an authentication token to the requestor based on a valid login.
+            //http://forums.asp.net/t/1969451.aspx?Extending+webapi+bearer+token+to+contain+custom+data</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-Account">POST Account</a></td>
+            <td class="api-documentation">
+<p>Provides an authentication token to the requestor based on a valid login.
+            //http://forums.asp.net/t/1969451.aspx?Extending+webapi+bearer+token+to+contain+custom+data</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="PatientsAccounts">PatientsAccounts</h2>
+<p>API to manage patient accounts and their details.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-clinicians-patients_take_skip_searchType_nameFilter_includeInactivePatients_includeNotAuthorized_startDate_endDate_isNameFilterRequired_applyRules">GET
+ 
+v2/clinicians/patients?take={take}&amp;skip={skip}&amp;searchType={searchType}&amp;nameFilter={nameFilter}&amp;includeInactivePatients={includeInactivePatients}&amp;includeNotAuthorized={includeNotAuthorized}&amp;startDate={startDate}&amp;endDate={endDate}&amp;isNameFilterRequired={isNameFilterRequired}&amp;applyRules={applyRules}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2-clinicians-patients">PUT v2/clinicians/patients</a></td>
+            <td class="api-documentation">
+<p>Updates patient profiles.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-v2-admin-patients-id">DELETE v2/admin/patients/{id}</a></td>
+            <td class="api-documentation">
+<p>Deactivates a patient's account by setting its status to "Inactive".</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="HealthPlanAppliance">HealthPlanAppliance</h2>
+<p>Controller to query for insurance eligibility</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-healthplan-id-skip">POST healthplan/{id}/skip</a></td>
+            <td class="api-documentation">
+<p>Call to skip the healthcare verification, this can only be used when eCommerce Module if Off</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-healthplan-id-clear">POST healthplan/{id}/clear</a></td>
+            <td class="api-documentation">
+<p>Call to clear health plan when cancel</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-healthplan-id-apply_retry">POST healthplan/{id}/apply?retry={retry}</a></td>
+            <td class="api-documentation">
+<p>Queries RxNT of the Mock Server for Insurance Eligibility</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="PatientAppointments">PatientAppointments</h2>
+<p>Exposes patient appointments management</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-patients-appointments-appointmentId">GET v2.1/patients/appointments/{appointmentId}</a></td>
+            <td class="api-documentation">
+<p>Gets the appointment.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-patients-appointments_includePatientCoUsers">GET v2.1/patients/appointments?includePatientCoUsers={includePatientCoUsers}</a></td>
+            <td class="api-documentation">
+<p>Gets the patient scheduled appointments.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-patients-scheduled-appointments_includePatientCoUsers">GET v2.1/patients/scheduled-appointments?includePatientCoUsers={includePatientCoUsers}</a></td>
+            <td class="api-documentation">
+<p>Gets the patient scheduled appointments.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-patients-filtered-appointments">GET v2.1/patients/filtered-appointments</a></td>
+            <td class="api-documentation">
+<p>Gets the filtered appointments for login patient.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-v2.1-patients-appointments-appointmentId">PUT v2.1/patients/appointments/{appointmentId}</a></td>
+            <td class="api-documentation">
+<p>Updates appointment.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-v2.1-patients-appointments-appointmentId">DELETE v2.1/patients/appointments/{appointmentId}</a></td>
+            <td class="api-documentation">
+<p>Cancels patient's appointment.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-patients-ondemand-availability_ProviderId_StartTime_EndTime">GET v2.1/patients/ondemand/availability?ProviderId={ProviderId}&amp;StartTime={StartTime}&amp;EndTime={EndTime}</a></td>
+            <td class="api-documentation">
+<p>Checks the on demand availability for a hospitalId.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Hospitals">Hospitals</h2>
+<p>API to manage hospitals and hospital details.</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-hospital">GET hospital</a></td>
+            <td class="api-documentation">
+<p>Gets basic information about the logged-in user's provider organization.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-hospitals_patient">GET v2/hospitals?patient={patient}</a></td>
+            <td class="api-documentation">
+<p>Gets a list of providers associated with the given login ID.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-providers_patient">GET v2.1/providers?patient={patient}</a></td>
+            <td class="api-documentation">
+<p>Gets a list of providers associated with the given login ID.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-hospital">GET v2/hospital</a></td>
+            <td class="api-documentation">
+<p>Gets basic information about the logged-in user's provider organization.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-hospital-hospitalId">GET v2/hospital/{hospitalId}</a></td>
+            <td class="api-documentation">
+<p>Gets basic information about the hospital whose identifier is provided.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-providers-hospitalId">GET v2.1/providers/{hospitalId}</a></td>
+            <td class="api-documentation">
+<p>Gets basic information about the provider whose identifier is provided.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2-hospitals-providers-partialName">GET v2/hospitals/providers/{partialName}</a></td>
+            <td class="api-documentation">
+<p>Searches providers by partial name. Minimum 3 letters required.</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-v2.1-providers-list-partialName">GET v2.1/providers/list/{partialName}</a></td>
+            <td class="api-documentation">
+<p>Searches providers by partial name. Minimum 3 letters required.</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="CountryCode">CountryCode</h2>
+<p>Web Api to Get List Of Country Code</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-CountryCode-Get">GET CountryCode/Get</a></td>
+            <td class="api-documentation">
+<p>Url Resources for Countr Code Api</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-CountryCode">GET CountryCode</a></td>
+            <td class="api-documentation">
+<p>Url Resources for Countr Code Api</p>            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="LegalDocuments">LegalDocuments</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-LegalDocuments-Get_documentType">GET LegalDocuments/Get?documentType={documentType}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-LegalDocuments-Post">POST LegalDocuments/Post</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-LegalDocuments-Put_documentType">PUT LegalDocuments/Put?documentType={documentType}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-LegalDocuments-Delete_documentType">DELETE LegalDocuments/Delete?documentType={documentType}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-LegalDocuments_documentType">GET LegalDocuments?documentType={documentType}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-LegalDocuments">POST LegalDocuments</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/PUT-LegalDocuments_documentType">PUT LegalDocuments?documentType={documentType}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/DELETE-LegalDocuments_documentType">DELETE LegalDocuments?documentType={documentType}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="TestVideo">TestVideo</h2>
+<p>Test Video Controller for TokBox</p><table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-TestVideo-VideoKey">GET TestVideo/VideoKey</a></td>
+            <td class="api-documentation">
+<p>Get Video Key For Client</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-TestVideo-VideoShareKey-id">GET TestVideo/VideoShareKey/{id}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-TestVideo">GET TestVideo</a></td>
+            <td class="api-documentation">
+<p>Get Video Key For Client</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-TestVideo-id">GET TestVideo/{id}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2 id="Soapnotes">Soapnotes</h2>
+<table class="help-page-table">
+    <thead>
+        <tr><th>API</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-Soapnotes-Get-id">GET Soapnotes/Get/{id}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-Soapnotes-Post">POST Soapnotes/Post</a></td>
+            <td class="api-documentation">
+<p>This requires the user to be either the assigned doctor, assigned hospital user id or has ability to edit past
+                consultations (eRoleFunctions)</p>            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/GET-Soapnotes-id">GET Soapnotes/{id}</a></td>
+            <td class="api-documentation">
+            </td>
+        </tr>
+        <tr>
+            <td class="api-name"><a href="https://emerald.snap-qa.com/api/Help/Api/POST-Soapnotes">POST Soapnotes</a></td>
+            <td class="api-documentation">
+<p>This requires the user to be either the assigned doctor, assigned hospital user id or has ability to edit past
+                consultations (eRoleFunctions)</p>            </td>
+        </tr>
+    </tbody>
+</table>
+    </section>
+</div>
+
+
+</body></html>
