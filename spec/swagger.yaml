@@ -158,6 +158,39 @@
                     address: 
                       description: "A patient's address."
                       type: "string"
+                    addressObject: 
+                      description: "The complete address of the patient."
+                      type: "object"
+                      title: "SnapMD.VirtualCare.ApiModels.AddressObject"
+                      required: 
+                        - "line1"
+                        - "city"
+                        - "countryCode"
+                      properties: 
+                        line1: 
+                          description: "Line 1 of the patient address."
+                          type: "string"
+                        line2: 
+                          description: "Line 2 of the patient address."
+                          type: "string"
+                        city: 
+                          description: "City of the patient address."
+                          type: "string"
+                        state: 
+                          description: "State of the patient address."
+                          type: "string"
+                        stateCode: 
+                          description: "State code of the patient address."
+                          type: "string"
+                        postalCode: 
+                          description: "Postal code of the patient address."
+                          type: "string"
+                        country: 
+                          description: "Country of the patient address."
+                          type: "string"
+                        countryCode: 
+                          description: "ISO Country code of the patient address."
+                          type: "string"
                     profileImagePath: 
                       description: "A person's profile image. This field returns the image path whether or not it's null."
                       type: "string"
