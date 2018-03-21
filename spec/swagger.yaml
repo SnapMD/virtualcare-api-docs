@@ -25009,39 +25009,6 @@
             description: "The link was not found."
           410: 
             description: "The link is expired or the file cannot be downloaded anymore."
-    /v2.1/hello/api-keys: 
-      get: 
-        tags: 
-          - "Account Management and SSO"
-        summary: "Verify API setup with a \"Hello World\" endpoint which returns API access information."
-        responses: 
-          200: 
-            description: "The requested information from this endpoint, and information about the response itself."
-            schema: 
-              type: "object"
-              title: "SnapMD.VirtualCare.ApiModels.ApiResponseV2[SnapMD.Web.Api.Models.ApiKeysResponse]"
-              required: 
-                - "data"
-              properties: 
-                data: 
-                  type: "array"
-                  items: 
-                    type: "object"
-                    properties: 
-                      id: 
-                        format: "uuid"
-                        type: "string"
-                      key: 
-                        type: "string"
-                message: 
-                  description: "An optional message that may be returned when the operation was successful, if more information than a simple response status is necessary."
-                  type: "string"
-                total: 
-                  description: "The number of records available in this response. Each record is usually implemented as a nested object within the response data object. This feature is not implemented in all calls; please contact developer support for more information."
-                  type: "integer"
-                  format: "int32"
-          404: 
-            description: "API credentials were not found."
     /v2.1/images: {}
     /v2.1/images/{id}: 
       get: 
