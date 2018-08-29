@@ -3039,31 +3039,6 @@
                   description: "The number of records available in this response. Each record is usually implemented as a nested object within the response data object. This feature is not implemented in all calls; please contact developer support for more information."
                   type: "integer"
                   format: "int32"
-    /v2/clinicians/staff/rolefunctions: 
-      get: 
-        tags: 
-          - "Utility Calls"
-        summary: "Get whether the cuurent user has appropriate permissions for their roles."
-        responses: 
-          200: 
-            description: "The requested information from this endpoint, and information about the response itself."
-            schema: 
-              type: "object"
-              title: "SnapMD.VirtualCare.ApiModels.ApiResponseV2[Boolean]"
-              required: 
-                - "data"
-              properties: 
-                data: 
-                  type: "boolean"
-                message: 
-                  description: "An optional message that may be returned when the operation was successful, if more information than a simple response status is necessary."
-                  type: "string"
-                total: 
-                  description: "The number of records available in this response. Each record is usually implemented as a nested object within the response data object. This feature is not implemented in all calls; please contact developer support for more information."
-                  type: "integer"
-                  format: "int32"
-          401: 
-            description: "The user is not a hospital staff member, so they cannot run this endpoint."
     /v2/clinicians/staffaccounts: 
       delete: 
         tags: 
@@ -6126,16 +6101,6 @@
                   description: "The number of records available in this response. Each record is usually implemented as a nested object within the response data object. This feature is not implemented in all calls; please contact developer support for more information."
                   type: "integer"
                   format: "int32"
-    /v2/hospitals/within-users-limit: 
-      get: 
-        tags: 
-          - "Hospitals and Staff"
-        summary: "Get whether the total number of users registered for the current user's hospital is below the allotted maximum."
-        responses: 
-          200: 
-            description: "Whether the number of users for the hospital is in the proper range."
-            schema: 
-              type: "boolean"
     /v2/integrations/eprescription/ssocontext: 
       post: 
         tags: 
