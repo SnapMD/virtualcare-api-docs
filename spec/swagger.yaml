@@ -18145,41 +18145,6 @@
                   description: "The number of records available in this response. Each record is usually implemented as a nested object within the response data object. This feature is not implemented in all calls; please contact developer support for more information."
                   type: "integer"
                   format: "int32"
-    /v2/snapmd/hospital/diagnosticcodingsystem/{hospitalId}: 
-      parameters: 
-        - 
-          name: "hospitalId"
-          in: "path"
-          description: "The hospital ID."
-          required: true
-          type: "integer"
-          format: "int32"
-      get: 
-        tags: 
-          - "Hospitals and Staff"
-        summary: "Get the secondary medical coding system name for a hospital."
-        responses: 
-          200: 
-            description: "The medical coding system name."
-            schema: 
-              type: "string"
-      put: 
-        tags: 
-          - "Hospitals and Staff"
-        summary: "Update the secondary medical coding system name for a hospital."
-        parameters: 
-          - 
-            name: "diagnosticcodingsystem"
-            in: "body"
-            description: "The coding system name."
-            required: true
-            schema: 
-              type: "string"
-        responses: 
-          204: 
-            description: "The coding system name was updated correctly."
-          401: 
-            description: "The current user cannot change the coding system name."
     /v2/timezones: 
       get: 
         tags: 
