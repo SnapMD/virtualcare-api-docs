@@ -488,8 +488,8 @@
       put: 
         tags: 
           - "Account Management and SSO"
-        summary: "Update a user's account password with a reset token."
-        description: "This endpoint uses multiple methodologies to change a user's password for the SnapMD system.\n\nThere are two different possible sets of query parameters that can be given to this endpoint using a PUT request. For each set of query parameters, every parameter is required in order for the password change to be executed properly. Therefore, all query parameters to this endpoint, under the PUT request, are listed as required. However, only one set of query parameters must be specified at a time.\n\nThe first set of query parameters changes a password with raw password strings. This set contains two parameters: the user's new password (`new`) and the user's old password (`old`).\n\nThe second set of query parameters changes a password using a reset token. This set contains two parameters: the user's new password (`password`) and the reset token (`token`)."
+        summary: "Update a user's account password."
+        description: "This endpoint changes the password for logged in user with raw password strings. There are two parameters: the user's new password (`new`) and the user's old password (`old`)."
         parameters: 
           - 
             name: "new"
@@ -501,18 +501,6 @@
             name: "old"
             in: "query"
             description: "The user's old password."
-            required: true
-            type: "string"
-          - 
-            name: "password"
-            in: "query"
-            description: "The user's new password."
-            required: true
-            type: "string"
-          - 
-            name: "token"
-            in: "query"
-            description: "The password reset token."
             required: true
             type: "string"
         responses: 
