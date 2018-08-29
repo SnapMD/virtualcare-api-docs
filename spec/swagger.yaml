@@ -2332,38 +2332,6 @@
             description: "The current user's ID does not match the given hospital ID."
           401: 
             description: "The user is not a SnapMD staff member, so they cannot run this endpoint."
-    /v2/clinicians/patientinteraction: 
-      get: 
-        tags: 
-          - "Hospitals and Staff"
-        summary: "Check whether a physician interacts with patients."
-        parameters: 
-          - 
-            name: "roles"
-            in: "query"
-            description: "The list of roles a staff user has."
-            required: true
-            type: "string"
-        responses: 
-          200: 
-            description: "The requested information from this endpoint, and information about the response itself."
-            schema: 
-              type: "object"
-              title: "SnapMD.VirtualCare.ApiModels.ApiResponseV2[Boolean]"
-              required: 
-                - "data"
-              properties: 
-                data: 
-                  type: "boolean"
-                message: 
-                  description: "An optional message that may be returned when the operation was successful, if more information than a simple response status is necessary."
-                  type: "string"
-                total: 
-                  description: "The number of records available in this response. Each record is usually implemented as a nested object within the response data object. This feature is not implemented in all calls; please contact developer support for more information."
-                  type: "integer"
-                  format: "int32"
-          401: 
-            description: "The user is not a SnapMD staff member, so they cannot run this endpoint."
     /v2/clinicians/patients: 
       get: 
         tags: 
